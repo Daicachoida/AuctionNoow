@@ -1,0 +1,98 @@
+@startuml
+title AuctionNoow — Business Use Case
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Khách" as Guest
+actor "Người dùng" as User
+actor "Người mua" as Buyer
+actor "Người bán" as Seller
+actor "Vận hành" as Ops
+actor "Đối tác thanh toán\n(tầng B)" as Payment
+actor "Nhà vận chuyển" as Carrier
+Buyer --|> User
+Seller --|> User
+
+rectangle "AuctionNoow" {
+  package "Tham gia và đăng hàng" {
+    usecase "BUC-01\nĐăng ký, xác thực tài khoản" as B01
+    usecase "BUC-02\nXác minh người bán" as B02
+    usecase "BUC-03\nĐăng hàng và duyệt tin" as B03
+    usecase "BUC-04\nTìm, xem, đề xuất mặt hàng" as B04
+  }
+  package "Đấu giá" {
+    usecase "BUC-05\nĐặt giá và mua ngay" as B05
+    usecase "BUC-06\nChốt phiên, xác định người thắng" as B06
+    usecase "BUC-14\nDừng hoặc hủy phiên" as B14
+  }
+  package "Giao dịch và hậu mãi" {
+    usecase "BUC-07\nThanh toán" as B07
+    usecase "BUC-08\nNgười thắng bỏ thanh toán" as B08
+    usecase "BUC-09\nGiao hàng" as B09
+    usecase "BUC-10\nHoàn tất, giải ngân" as B10
+    usecase "BUC-11\nTranh chấp, trả hàng, hoàn tiền" as B11
+    usecase "BUC-12\nĐánh giá" as B12
+  }
+  usecase "BUC-13\nGiám sát, kiểm duyệt" as B13
+}
+
+Guest -- B01
+Guest -- B04
+User -- B01
+Buyer -- B04
+Buyer -- B05
+Buyer -- B06
+Buyer -- B07
+Buyer -- B08
+Buyer -- B09
+Buyer -- B11
+Buyer -- B12
+Buyer -- B13
+Buyer -- B14
+Seller -- B02
+Seller -- B03
+Seller -- B06
+Seller -- B07
+Seller -- B08
+Seller -- B09
+Seller -- B10
+Seller -- B11
+Seller -- B12
+Seller -- B13
+Seller -- B14
+Ops -- B02
+Ops -- B03
+Ops -- B07
+Ops -- B08
+Ops -- B09
+Ops -- B10
+Ops -- B11
+Ops -- B12
+Ops -- B13
+Ops -- B14
+Payment -- B05
+Payment -- B07
+Payment -- B08
+Payment -- B10
+Payment -- B11
+Payment -- B14
+Carrier -- B09
+
+note right of B04
+  Phần đề xuất mặt hàng ngoài MVP,
+  chờ PO duyệt.
+end note
+note right of B06
+  Hệ thống tự động đóng phiên theo giờ máy chủ.
+end note
+note right of B07
+  Tầng A: hai bên tự thanh toán ngoài nền tảng;
+  hệ thống chỉ ghi lời khai, không bảo vệ tiền.
+  Tầng B: tiền thật qua đối tác bảo đảm.
+end note
+note right of B10
+  Tầng A: đóng thử nghiệm thủ công.
+  Tầng B: hoàn tất và giải ngân qua đối tác.
+end note
+@enduml

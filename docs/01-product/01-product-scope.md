@@ -115,7 +115,7 @@ Một lát cắt giao dịch từ đầu đến cuối có thể gồm:
 
 Nhà cung cấp và cách triển khai hợp lệ cơ chế giữ tiền, vận chuyển, xác minh và mức tự động hóa còn mở. Nếu chỉ thử nghiệm một phần chuỗi giao dịch, cần ghi rõ giới hạn thử nghiệm trước khi phát hành. Danh mục khởi động có thể được thu hẹp để thử nghiệm mà vẫn giữ định vị marketplace tổng hợp.
 
-**Cập nhật 2026-11-07 (đề xuất, chưa phê duyệt):** lát cắt trên có thể chia thành tầng A (thử nghiệm kín, chưa nhận hoặc giữ tiền thật; thanh toán chỉ ghi nhận là người thắng tự khai và không tính là đã thanh toán) và tầng B (thanh toán bảo đảm, chỉ mở khi đạt cổng phát hành). Chi tiết, tiêu chí vào / ra và kịch bản kiểm thử ở [01b-mvp-scope.md](01b-mvp-scope.md). Việc chia tầng không đổi mục tiêu giữ tiền đã chốt ở mục 2; nó chỉ thay đổi thứ tự triển khai nếu PO duyệt.
+**Cập nhật 2026-11-09 (PO chọn chia tầng):** tầng A thử nghiệm kín với người và hàng thật; hai bên có thể tự thanh toán, giao hàng ngoài nền tảng. Hệ thống chỉ ghi lời khai, không nhận, giữ, đối soát hoặc bảo vệ tiền và không coi lời khai là `đã thanh toán`. Tầng B xử lý tiền thật qua đối tác thanh toán bảo đảm, chỉ mở khi đạt cổng đối tác và pháp lý. Chi tiết, tiêu chí vào / ra và kịch bản kiểm thử ở [01b-mvp-scope.md](01b-mvp-scope.md). Việc chia tầng không đổi mục tiêu giữ tiền đã chốt ở mục 2; nó thay đổi thứ tự triển khai.
 
 ### 9.3. Chưa cam kết cho MVP
 
@@ -205,14 +205,15 @@ Chưa chọn nhà cung cấp; không mặc định mọi tích hợp đều bắ
 9. Ai được đánh giá ai, vào thời điểm nào và cách hạn chế thao túng uy tín?
 10. Thu phí theo mô hình nào? Mục tiêu sử dụng, ngân sách và lịch thử nghiệm là gì?
 11. Mô hình vận hành cụ thể phải đáp ứng yêu cầu pháp lý nào trước khi mở giao dịch thật?
-12. Chống người thắng bỏ thanh toán bằng cách nào: không đặt trước, giữ chỗ trên phương thức thanh toán, hay tiền đặt trước? Hạn trả bao lâu và có mời người đặt giá kế tiếp không? (xem D-08 và mục 9.5 của file 02)
+12. Chống người thắng bỏ thanh toán: PO đã chọn hướng tiền đặt trước theo cơ chế Điều 39 (2026-11-09). Còn mở: tỷ lệ, thời điểm thu, người nhận khoản bị mất, hạn trả, mời người đặt giá kế tiếp, tính hợp pháp. (xem D-08 và mục 9.5 của file 02)
+13. Bảo vệ người mua: PO chọn hướng giống Shopee, cửa sổ 15 ngày (2026-11-09). Còn mở: hàng giả phát hiện muộn, thu hồi tiền hoàn từ người bán, bỏ lý do "đổi ý". (xem D-09 và mục 9.6 của file 02)
 
 ## 17. Các quyết định tiếp theo
 
 | Thời điểm | Quyết định cần chốt | Đầu ra dự kiến |
 |---|---|---|
 | Trước khi chốt MVP | Hàng hóa, nhóm người dùng ưu tiên, luồng giao dịch tối thiểu và giới hạn thử nghiệm | Danh sách trong / ngoài MVP được phê duyệt |
-| Trước khi chốt quy tắc thanh toán | Kiểm soát bỏ thanh toán (đặt trước / giữ chỗ / không), hạn trả, mời người đặt giá kế tiếp, chế tài | Quyết định D-08 trong file 02 |
+| Trước khi chốt quy tắc thanh toán | Thông số tiền đặt trước (hướng đã chọn), hạn trả, mời người đặt giá kế tiếp, chế tài | Chốt các điểm còn mở của D-08 trong file 02 |
 | Khi viết Requirements | Quy tắc đấu giá, điều kiện tham gia, thanh toán, giao hàng, tranh chấp, uy tín và xác minh | Yêu cầu chức năng, quy tắc nghiệp vụ và tiêu chí nghiệm thu |
 | Trước thiết kế hệ thống | Quy mô dự kiến, yêu cầu tính đúng đắn, bảo mật, lưu vết, tích hợp và khả năng mở rộng quốc tế | Ràng buộc thiết kế và mô hình miền nghiệp vụ |
 | Trước thử nghiệm giao dịch thật | Rà soát yêu cầu áp dụng, nhà cung cấp, chính sách vận hành, hỗ trợ và chỉ số mục tiêu | Điều kiện sẵn sàng thử nghiệm |

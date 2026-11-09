@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1606" height="1367" viewBox="0 0 1606 1367" role="img" aria-labelledby="title desc">
+<title id="title">system use case 07 10</title>
+<desc id="desc">Mỗi hàng là một use case; chấm tròn cho biết tác nhân tham gia. Nhãn A, B thể hiện tầng áp dụng.</desc>
+<rect width="1606" height="1367" fill="#ffffff"/>
+<text x="45" y="60" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#172b43">AuctionNoow · System Use Case</text>
+<text x="45" y="92" font-family="Arial,sans-serif" font-size="17" fill="#526579">system-use-case-07-10 · 16 nhóm/use case</text>
+<line x1="45" y1="112" x2="1561" y2="112" stroke="#cbd5e1" stroke-width="2"/>
+<text x="45" y="139" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">Tác nhân tham gia</text>
+<text x="768" y="139" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">Use case trong hệ thống</text>
+<text x="114" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Người mua /</text>
+<text x="114" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">người thắng</text>
+<line x1="114" y1="184" x2="114" y2="1315" stroke="#e2e8f0"/>
+<text x="250" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Người bán</text>
+<line x1="250" y1="184" x2="250" y2="1315" stroke="#e2e8f0"/>
+<text x="388" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Vận hành</text>
+<line x1="388" y1="184" x2="388" y2="1315" stroke="#e2e8f0"/>
+<text x="524" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Đối tác thanh</text>
+<text x="524" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">toán / B</text>
+<line x1="524" y1="184" x2="524" y2="1315" stroke="#e2e8f0"/>
+<text x="662" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Nhà vận chuyển /</text>
+<text x="662" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">B</text>
+<line x1="662" y1="184" x2="662" y2="1315" stroke="#e2e8f0"/>
+<rect x="45" y="186" width="1516" height="31" rx="6" fill="#e8eef6"/>
+<text x="57" y="207" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#27415c">BUC-07 · Thanh toán</text>
+<rect x="45" y="526" width="1516" height="31" rx="6" fill="#e8eef6"/>
+<text x="57" y="547" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#27415c">BUC-08 · Bỏ thanh toán</text>
+<rect x="45" y="744" width="1516" height="31" rx="6" fill="#e8eef6"/>
+<text x="57" y="765" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#27415c">BUC-09 · Giao hàng</text>
+<rect x="45" y="1023" width="1516" height="31" rx="6" fill="#e8eef6"/>
+<text x="57" y="1044" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#27415c">BUC-10 · Hoàn tất, giải ngân</text>
+<line x1="45" y1="273" x2="1561" y2="273" stroke="#e8edf2"/>
+<rect x="756" y="223" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="251" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-07-01 · Xem thông tin thanh toán</text>
+<text x="1546" y="251" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="114" cy="246" r="8" fill="#2482b9"/>
+<line x1="45" y1="334" x2="1561" y2="334" stroke="#e8edf2"/>
+<rect x="756" y="284" width="810" height="45" rx="22" fill="#e8f7ed" stroke="#25a45a" stroke-width="1.5"/>
+<text x="773" y="312" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-07-02 · Ghi lời khai chuyển tiền</text>
+<text x="1546" y="312" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A</text>
+<circle cx="114" cy="307" r="8" fill="#2482b9"/>
+<line x1="45" y1="395" x2="1561" y2="395" stroke="#e8edf2"/>
+<rect x="756" y="345" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="373" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-07-03 · Thanh toán qua đối tác</text>
+<text x="1546" y="373" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="114" cy="368" r="8" fill="#2482b9"/>
+<circle cx="524" cy="368" r="8" fill="#2482b9"/>
+<line x1="45" y1="456" x2="1561" y2="456" stroke="#e8edf2"/>
+<rect x="756" y="406" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="434" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-07-04 · Xử lý sự kiện trùng, muộn</text>
+<text x="1546" y="434" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="524" cy="429" r="8" fill="#2482b9"/>
+<line x1="45" y1="517" x2="1561" y2="517" stroke="#e8edf2"/>
+<rect x="756" y="467" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="495" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-07-05 · Tra cứu, đối soát</text>
+<text x="1546" y="495" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="388" cy="490" r="8" fill="#2482b9"/>
+<line x1="45" y1="613" x2="1561" y2="613" stroke="#e8edf2"/>
+<rect x="756" y="563" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="591" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-08-01 · Nhắc, quá hạn, hủy giao dịch</text>
+<text x="1546" y="591" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<line x1="45" y1="674" x2="1561" y2="674" stroke="#e8edf2"/>
+<rect x="756" y="624" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="652" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-08-02 · Xử lý tiền đặt trước</text>
+<text x="1546" y="652" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="388" cy="647" r="8" fill="#2482b9"/>
+<circle cx="524" cy="647" r="8" fill="#2482b9"/>
+<line x1="45" y1="735" x2="1561" y2="735" stroke="#e8edf2"/>
+<rect x="756" y="685" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="713" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-08-03 · Hạn chế tài khoản tái phạm</text>
+<text x="1546" y="713" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="388" cy="708" r="8" fill="#2482b9"/>
+<line x1="45" y1="831" x2="1561" y2="831" stroke="#e8edf2"/>
+<rect x="756" y="781" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="809" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-09-01 · Xem giao hàng, hạn bàn giao</text>
+<text x="1546" y="809" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="250" cy="804" r="8" fill="#2482b9"/>
+<line x1="45" y1="892" x2="1561" y2="892" stroke="#e8edf2"/>
+<rect x="756" y="842" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="870" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-09-02 · Nhập mã vận đơn</text>
+<text x="1546" y="870" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="250" cy="865" r="8" fill="#2482b9"/>
+<line x1="45" y1="953" x2="1561" y2="953" stroke="#e8edf2"/>
+<rect x="756" y="903" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="931" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-09-03 · Cập nhật trạng thái giao</text>
+<text x="1546" y="931" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="662" cy="926" r="8" fill="#2482b9"/>
+<line x1="45" y1="1014" x2="1561" y2="1014" stroke="#e8edf2"/>
+<rect x="756" y="964" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="773" y="992" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-09-04 · Xử lý quá hạn, giao thất bại</text>
+<text x="1546" y="992" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A,B</text>
+<circle cx="388" cy="987" r="8" fill="#2482b9"/>
+<line x1="45" y1="1110" x2="1561" y2="1110" stroke="#e8edf2"/>
+<rect x="756" y="1060" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="1088" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-10-01 · Hoàn tất tự động</text>
+<text x="1546" y="1088" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<line x1="45" y1="1171" x2="1561" y2="1171" stroke="#e8edf2"/>
+<rect x="756" y="1121" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="1149" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-10-02 · Giải ngân người bán</text>
+<text x="1546" y="1149" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="524" cy="1144" r="8" fill="#2482b9"/>
+<line x1="45" y1="1232" x2="1561" y2="1232" stroke="#e8edf2"/>
+<rect x="756" y="1182" width="810" height="45" rx="22" fill="#e8f0ff" stroke="#3b75d9" stroke-width="1.5"/>
+<text x="773" y="1210" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-10-03 · Hoàn tiền người mua</text>
+<text x="1546" y="1210" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">B</text>
+<circle cx="388" cy="1205" r="8" fill="#2482b9"/>
+<circle cx="524" cy="1205" r="8" fill="#2482b9"/>
+<line x1="45" y1="1293" x2="1561" y2="1293" stroke="#e8edf2"/>
+<rect x="756" y="1243" width="810" height="45" rx="22" fill="#e8f7ed" stroke="#25a45a" stroke-width="1.5"/>
+<text x="773" y="1271" font-family="Arial,sans-serif" font-size="15" fill="#20354a">SUC-10-04 · Đóng thử nghiệm thủ công</text>
+<text x="1546" y="1271" text-anchor="end" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#415d78">A</text>
+<circle cx="388" cy="1266" r="8" fill="#2482b9"/>
+<text x="45" y="1343" font-family="Arial,sans-serif" font-size="14" fill="#526579">Chấm tròn = tác nhân tham gia · A = giao dịch ngoài nền tảng · B = thanh toán qua đối tác</text>
+</svg>

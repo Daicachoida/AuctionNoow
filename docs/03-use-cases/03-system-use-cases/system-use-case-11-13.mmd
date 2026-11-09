@@ -1,0 +1,53 @@
+flowchart LR
+    User["Người dùng"]
+    Buyer["Người mua"]
+    Seller["Người bán"]
+    Ops["Vận hành"]
+    Payment["Đối tác thanh toán · B"]
+
+    subgraph AN["AuctionNoow · ranh giới hệ thống"]
+      subgraph B11["BUC-11 · Tranh chấp, trả hàng, hoàn tiền"]
+        U1101(["SUC-11-01 · Mở tranh chấp, yêu cầu trả · A,B"])
+        U1102(["SUC-11-02 · Phản hồi tranh chấp · A,B"])
+        U1103(["SUC-11-03 · Xem xét, ra quyết định · A,B"])
+        U1104(["SUC-11-04 · Kháng nghị · A,B"])
+        U1105(["SUC-11-05 · Hàng giả sau 15 ngày · B"])
+        U1106(["SUC-11-06 · Tranh chấp sau giải ngân · B"])
+      end
+      subgraph B12["BUC-12 · Đánh giá"]
+        U1201(["SUC-12-01 · Đánh giá đối tác · A,B"])
+        U1202(["SUC-12-02 · Xem uy tín công khai · A,B"])
+        U1203(["SUC-12-03 · Báo cáo đánh giá vi phạm · A,B"])
+      end
+      subgraph B13["BUC-13 · Giám sát, kiểm duyệt"]
+        U1301(["SUC-13-01 · Gửi, tiếp nhận báo cáo · A,B"])
+        U1302(["SUC-13-02 · Ẩn, gỡ tin · A,B"])
+        U1303(["SUC-13-03 · Khóa, hạn chế tài khoản · A,B"])
+        U1304(["SUC-13-04 · Xử lý đặt giá ảo thủ công · A,B"])
+        U1305(["SUC-13-05 · Báo cáo vận hành hằng ngày · A,B"])
+        U1306(["SUC-13-06 · Tra cứu nhật ký thay đổi · A,B"])
+      end
+    end
+
+    User --- U1202
+    User --- U1203
+    User --- U1301
+    Buyer --- U1101
+    Buyer --- U1104
+    Buyer --- U1201
+    Seller --- U1102
+    Seller --- U1104
+    Seller --- U1201
+    Ops --- U1103
+    Ops --- U1105
+    Ops --- U1106
+    Ops --- U1301
+    Ops --- U1302
+    Ops --- U1303
+    Ops --- U1304
+    Ops --- U1305
+    Ops --- U1306
+    Payment --- U1106
+
+    classDef onlyB fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class U1105,U1106 onlyB

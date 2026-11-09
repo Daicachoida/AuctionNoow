@@ -5,15 +5,15 @@
 | Thuộc tính | Nội dung |
 |---|---|
 | Dự án | AuctionNoow — marketplace đấu giá, triển khai tại Việt Nam trước |
-| Phiên bản | 0.3 — sửa BR-16, thêm mục 9.5 (kiểm soát bỏ thanh toán), D-08, tiêu chí nghiệm thu 12 và nguồn nghiên cứu mới; chờ PO duyệt |
-| Ngày rà soát | 2026-11-07 |
-| Đầu vào | [01-product-scope.md](01-product-scope.md) và các quyết định đã trao đổi |
+| Phiên bản | 0.5 — thêm D-09: PO chọn bảo vệ người mua giống Shopee (2026-11-09); P-15, P-16 đổi sang 15 ngày; thêm P-21, mục 9.6, FR-46–48, BR-42–43. Trước đó 0.4: D-08 tiền đặt trước theo Điều 39. Chờ xác minh pháp lý và thông số |
+| Ngày rà soát | 2026-11-09 |
+| Đầu vào | [01-product-scope.md](../01-product/01-product-scope.md) và các quyết định đã trao đổi |
 | Mục đích | Xác định hành vi sản phẩm và quy tắc nghiệp vụ đủ rõ để thiết kế luồng, ước lượng, triển khai và kiểm thử MVP |
 | Chủ quyết định | Chủ dự án / Product Owner (PO) |
 
 **Trạng thái quyết định:** `Đã chốt` = PO đã chọn; `Đề xuất MVP` = BA đưa ra phương án cụ thể để PO duyệt; `Cần chốt` = còn thiếu lựa chọn; `Cổng phát hành` = phải xác minh trước khi cho giao dịch thật. Các con số đề xuất trong mục 9 là **giả định sản phẩm**, không phải quy định pháp luật hay quyết định đã chốt. Khi PO đồng ý, cập nhật trạng thái trong bảng quy tắc và tiêu chí nghiệm thu tương ứng.
 
-**Quy tắc quản lý thay đổi:** mỗi quyết định mới cần cập nhật trạng thái, ngày, người quyết định và các yêu cầu / tiêu chí nghiệm thu liên quan. File này mô tả *sản phẩm phải làm gì*; [03-use-cases-user-flows.md](03-use-cases-user-flows.md) sẽ diễn giải luồng thao tác và [04-system-design.md](04-system-design.md) mô tả cách hiện thực.
+**Quy tắc quản lý thay đổi:** mỗi quyết định mới cần cập nhật trạng thái, ngày, người quyết định và các yêu cầu / tiêu chí nghiệm thu liên quan. File này mô tả *sản phẩm phải làm gì*; [03-use-cases-user-flows.md](../03-use-cases/03-use-cases-user-flows.md) diễn giải luồng thao tác và [04-system-design.md](../04-system-design/04-system-design.md) dành cho cách hiện thực.
 
 ## 2. Phạm vi và nguyên tắc
 
@@ -29,7 +29,7 @@
 
 Một phiên đấu giá cho **một lô hàng**, một người thắng và một giao dịch tiếp theo; tài khoản, hồ sơ người bán, đăng hàng, duyệt / từ chối, tìm kiếm cơ bản, đặt giá, chốt phiên, xử lý thanh toán, cập nhật vận chuyển, khiếu nại và đánh giá. Đây là lát cắt để ước lượng, **chưa phải phạm vi MVP được PO phê duyệt**.
 
-Chưa cam kết: đấu giá nhiều lô cùng lúc, đấu giá ngược, tự động đặt giá hộ, livestream, đa tiền tệ, giao dịch xuyên biên giới, ví nội bộ, **tự vận hành dịch vụ giữ tiền**, nhập catalog hàng loạt, quản lý nhiều nhân viên cho một shop. Nếu PO chọn tính năng nào trong số này, phải mở rộng yêu cầu và bộ kiểm thử trước khi triển khai. Cơ chế giữ tiền qua đối tác phù hợp vẫn là mục tiêu MVP. Đề xuất chia MVP thành tầng A (thử nghiệm kín, chưa xử lý tiền thật) và tầng B (thanh toán bảo đảm), xem [01b-mvp-scope.md](01b-mvp-scope.md); chưa được PO duyệt.
+Chưa cam kết: đấu giá nhiều lô cùng lúc, đấu giá ngược, tự động đặt giá hộ, livestream, đa tiền tệ, giao dịch xuyên biên giới, ví nội bộ, **tự vận hành dịch vụ giữ tiền**, nhập catalog hàng loạt, quản lý nhiều nhân viên cho một shop. Nếu PO chọn tính năng nào trong số này, phải mở rộng yêu cầu và bộ kiểm thử trước khi triển khai. PO đã chọn chia MVP thành tầng A (thử nghiệm kín với giao dịch tiền thật có thể diễn ra trực tiếp giữa hai bên ngoài nền tảng; hệ thống không xử lý hoặc bảo vệ tiền) và tầng B (thanh toán bảo đảm bằng tiền thật qua đối tác), xem [01b-mvp-scope.md](../01-product/01b-mvp-scope.md). Cơ chế giữ tiền qua đối tác vẫn là mục tiêu của tầng B và chưa chọn nhà cung cấp.
 
 ### 2.3. Thuật ngữ
 
@@ -100,7 +100,7 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 | FR-18 | Hệ thống xử lý rõ hai kết quả khi đóng phiên: không có giá hợp lệ, hoặc người dẫn đầu hợp lệ thắng. Mua ngay là nhánh kết thúc riêng trước khi có giá hợp lệ. |
 | FR-19 | Nếu phiên bị dừng / hủy, hệ thống công bố lý do và ảnh hưởng tới các lượt đặt đã có; không chuyển thành giao dịch thành công một cách ngầm định. |
 
-**Đã chốt:** đấu giá tăng dần thủ công, có mua ngay trước lượt giá hợp lệ đầu tiên, không có giá bảo lưu hoặc tự trả giá hộ, có gia hạn mềm 2 phút cuối. **Đề xuất P-05–10:** thời lượng, bước giá, không đặt cọc, rút / hủy giá qua vận hành và giữ chỗ mua ngay 10 phút.
+**Đã chốt:** đấu giá tăng dần thủ công, có mua ngay trước lượt giá hợp lệ đầu tiên, không có giá bảo lưu hoặc tự trả giá hộ, có gia hạn mềm 2 phút cuối. **Đề xuất P-05–10:** thời lượng, bước giá, tiền đặt trước theo hướng Điều 39 (chỉ ở tầng B qua đối tác; P-07, D-08), rút / hủy giá qua vận hành và giữ chỗ mua ngay 10 phút ở tầng B.
 
 **Luật gia hạn đã chốt:** nếu lượt giá hợp lệ được xác nhận khi thời gian còn lại `≤ 2 phút` và phiên chưa đóng, thời điểm đóng mới bằng thời điểm xác nhận lượt giá đó `+ 2 phút`. Mỗi lượt hợp lệ tiếp theo trong 2 phút cuối tiếp tục áp dụng; phiên đóng sau 2 phút không có lượt hợp lệ mới. Giờ đóng mới phải hiển thị cho người tham gia. Thời điểm máy chủ là chuẩn; thông báo có thể đến chậm nhưng không đổi kết quả chính thức. Cần thử cạnh tranh đồng thời và sát ranh giới trước phát hành.
 
@@ -110,7 +110,7 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 |---|---|
 | FR-38 | Nếu người bán bật mua ngay, phiên đang mở và chưa có lượt đặt giá hợp lệ, trang phiên hiển thị giá mua ngay, tổng chi phí dự kiến và điều kiện thanh toán bên cạnh lựa chọn đặt giá. Sau lượt giá hợp lệ đầu tiên, lựa chọn mua ngay biến mất. |
 | FR-39 | Người mua đủ điều kiện có thể xác nhận mua ngay; hệ thống kiểm tra lại tính khả dụng của lô hàng tại thời điểm xác nhận và chỉ cho một người sở hữu quyền mua. Hành động mua ngay và lượt đặt giá đến đồng thời không được tạo hai người thắng / hai giao dịch bán cùng lô. |
-| FR-40 | Nếu mua ngay được chốt hợp lệ trước bất kỳ lượt giá hợp lệ nào, phiên dừng nhận giá và tạo giao dịch ở giá mua ngay. Nếu thanh toán mua ngay thất bại / quá hạn, cách mở lại phiên hoặc đăng lại phải theo quyết định PO, không tự khôi phục. |
+| FR-40 | Nếu mua ngay được chốt hợp lệ trước bất kỳ lượt giá hợp lệ nào, phiên dừng nhận giá và tạo giao dịch ở giá mua ngay. Tầng A tạo giao dịch thử nghiệm ngay, không chờ xác nhận tiền ngoài nền tảng. Tầng B chỉ chốt sau xác nhận thanh toán của đối tác; khi giữ chỗ thất bại / quá hạn thì khôi phục theo P-10 nếu được duyệt. |
 
 **Đề xuất P-10 cần PO duyệt và thử với đối tác thanh toán:** giá mua ngay tối thiểu, giữ chỗ, tạm dừng phiên và khôi phục khi không thanh toán. Chưa thể phát hành luồng mua ngay có tiền thật nếu đối tác không hỗ trợ xác nhận / hủy đáng tin cậy.
 
@@ -132,6 +132,8 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 | FR-41 | Sau khi người mua thanh toán, hệ thống chỉ ghi `tiền đang được giữ` khi có bằng chứng từ nhà cung cấp / tài khoản bảo đảm được chọn; người bán thấy khoản dự kiến nhận và lý do chưa được giải ngân. |
 | FR-42 | Khi đủ điều kiện giải ngân và không có tranh chấp chặn giải ngân, hệ thống gửi / ghi nhận yêu cầu giải ngân theo cơ chế của đối tác, đối soát kết quả và thông báo người bán. Yêu cầu lặp không tạo hai lần chi trả. |
 | FR-43 | Khi giao dịch đủ điều kiện hoàn tiền, hệ thống gửi / ghi nhận yêu cầu hoàn qua đối tác, đối soát trạng thái hoàn và thông báo người mua; hoàn một phần nếu có phải theo chính sách đã chốt. |
+| FR-44 | Tầng B: người đặt giá phải có khoản tiền đặt trước hợp lệ đang được giữ qua đối tác cho phiên đó trước lượt giá đầu tiên của mình trên phiên; trước khi nộp, hệ thống hiển thị số tiền, thời điểm hoàn và các trường hợp bị mất. Đề xuất theo D-08. |
+| FR-45 | Khi phiên kết thúc: người không thắng được giải phóng hoặc hoàn đặt trước trong hạn đã công bố (tham chiếu 3 ngày làm việc); người thắng được chuyển khoản đó thành phần đã trả của giá chốt, không trừ hai lần; người vi phạm bị xử lý mất đặt trước theo quy tắc công bố, có nhật ký và thông báo các bên. Đề xuất theo D-08. |
 
 **Đã chốt về kết quả mong muốn:** tiền người mua được giữ tới khi có điều kiện giải ngân / hoàn tiền, tương tự cơ chế bảo đảm của Shopee. **Cần chốt trước thiết kế và giao dịch thật:** đơn vị được phép giữ tiền, tài khoản pháp lý, hợp đồng với nhà cung cấp hỗ trợ nhiều người bán, quyền ra lệnh giải ngân / hoàn, thời hạn, phí, đối soát, thuế, hoàn tiền sau giải ngân và chargeback. Không mặc định AuctionNoow tự mở ví hay tự giữ tiền trong tài khoản ngân hàng của dự án. Không coi `thanh toán thành công` chỉ dựa vào việc người mua quay về trang thành công. Nếu chưa tìm được đối tác và cơ chế hợp lệ, luồng thanh toán bảo đảm chưa sẵn sàng phát hành; không âm thầm đổi sang chuyển thẳng tiền cho người bán.
 
@@ -146,8 +148,11 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 | FR-30 | Bên đủ điều kiện có thể mở tranh chấp với lý do, mô tả và bằng chứng; hệ thống cấp mã theo dõi, khóa bằng chứng liên quan và thông báo bên còn lại. |
 | FR-31 | Vận hành xem hồ sơ, yêu cầu thêm chứng cứ, ghi quyết định có lý do, thông báo các bên và ghi hành động hoàn tiền / tiếp tục chi trả nếu cơ chế thanh toán cho phép. |
 | FR-32 | Các nhánh không gửi hàng, giao thất bại, hàng sai mô tả, hủy / trả hàng và không phản hồi tranh chấp phải có chính sách, thời hạn và người chịu trách nhiệm được PO chốt trước khi thử nghiệm thật. |
+| FR-46 | Tầng B: trong cửa sổ P-15, người mua tạo yêu cầu trả hàng / hoàn tiền bằng cách chọn một lý do hợp lệ ở P-21 và đính kèm bằng chứng; hệ thống cấp mã theo dõi và chặn giải ngân theo FR-30. Không có lý do "đổi ý". Đề xuất theo D-09. |
+| FR-47 | Vận hành xem bằng chứng hai bên cùng bản mô tả đã khóa của tin (BR-09), ghi kết quả (hoàn sau khi trả hàng, hoàn không cần trả hàng, hoàn một phần, từ chối) kèm lý do, và thông báo các bên. Người bán có 48 giờ khiếu nại quyết định (P-16). Đề xuất theo D-09. |
+| FR-48 | Hệ thống hiển thị cho vận hành lịch sử yêu cầu trả hàng / hoàn tiền và dấu hiệu gian lận của người mua khi ra quyết định, để không hoàn không cần trả hàng chỉ dựa vào lý do được chọn. Đề xuất theo D-09. |
 
-**Đề xuất P-13–17:** dùng đơn vị có mã theo dõi, người mua trả phí hiển thị trước, người bán gửi trong 3 ngày làm việc, vận hành kiểm tra chứng cứ giao, giữ tiền 7 ngày lịch sau giao và chặn giải ngân khi có tranh chấp đúng hạn. Bảo hiểm, nhà vận chuyển và cơ chế hoàn / giải ngân thực tế phụ thuộc đối tác và quy chế đã rà.
+**Đề xuất P-13–17:** dùng đơn vị có mã theo dõi, người mua trả phí hiển thị trước, người bán gửi trong 3 ngày làm việc, vận hành kiểm tra chứng cứ giao, giữ tiền 15 ngày lịch sau giao (PO chọn hướng Shopee, D-09) và chặn giải ngân khi có tranh chấp đúng hạn. Bảo hiểm, nhà vận chuyển và cơ chế hoàn / giải ngân thực tế phụ thuộc đối tác và quy chế đã rà.
 
 ### 4.6. Uy tín, báo cáo và vận hành
 
@@ -187,7 +192,7 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 
 | ID | Quy tắc | Trạng thái |
 |---|---|---|
-| BR-11 | Chỉ tài khoản đủ điều kiện mới gửi giá; P-01 đề xuất xác thực email / điện thoại, P-07 đề xuất chưa thu đặt cọc. Điều kiện tuổi và xác minh cần rà trước phát hành. | Đề xuất P-01, P-07; cổng phát hành |
+| BR-11 | Chỉ tài khoản đủ điều kiện mới gửi giá; P-01 đề xuất xác thực email / điện thoại, ở tầng B, P-07 (PO chọn hướng 2026-11-09) yêu cầu có tiền đặt trước hợp lệ trước lượt giá đầu tiên trên phiên. Điều kiện tuổi và xác minh cần rà trước phát hành. | Đề xuất P-01; hướng đã chọn P-07; cổng phát hành |
 | BR-12 | Lượt giá chỉ được xét khi phiên đang mở. Đề xuất dùng thời điểm hệ thống **ghi nhận lượt hợp lệ thành công** làm căn cứ và công bố mốc đó trong lịch sử; không dùng đồng hồ thiết bị người mua. Yêu cầu chưa được ghi nhận trước mốc đóng bị từ chối. | Đề xuất MVP |
 | BR-13 | MVP dùng đấu giá tăng dần thủ công: người mua tự gửi từng giá, không có giá tối đa bí mật / tự trả giá hộ. P-06 đề xuất lượt đầu `≥ giá khởi điểm`, các lượt sau `≥ giá dẫn đầu + bước giá theo bậc`; lượt bằng giá đến sau bị từ chối. | Đã chốt kiểu; bước giá đề xuất P-06 |
 | BR-14 | Một lượt giá được chấp nhận phải được ghi bền vững trước khi trả xác nhận. Lượt bị từ chối không làm đổi giá dẫn đầu và có lý do đủ để người dùng hiểu. | Đề xuất MVP |
@@ -204,7 +209,7 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 |---|---|---|
 | BR-35 | Người bán có thể bật giá mua ngay khi tạo phiên; P-10 đề xuất giá mua ngay `≥ giá khởi điểm + một bước giá` và công bố trước khi người mua giao dịch. | Đã chốt tính năng; giá đề xuất P-10 |
 | BR-36 | Một lô hàng chỉ có một kết quả bán chính thức. Nếu giữ chỗ mua ngay được ghi nhận trước thì lượt giá đến sau bị từ chối; nếu lượt giá hợp lệ được ghi nhận trước thì mua ngay bị từ chối. Không dùng giờ trên thiết bị người mua để phân xử. | Đề xuất MVP |
-| BR-37 | Lượt đặt giá hợp lệ đầu tiên làm mất hiệu lực mua ngay; các yêu cầu mua ngay gửi sau đó bị từ chối. P-10 đề xuất giữ chỗ 10 phút, tạm dừng phiên và khôi phục có giới hạn nếu không thanh toán. | Đã chốt hiệu lực; giữ chỗ đề xuất P-10 |
+| BR-37 | Lượt đặt giá hợp lệ đầu tiên làm mất hiệu lực mua ngay; các yêu cầu mua ngay gửi sau đó bị từ chối. Tầng A chốt giao dịch thử nghiệm ngay khi xác nhận mua ngay hợp lệ, không xác nhận thanh toán ngoài nền tảng. P-10 đề xuất tầng B giữ chỗ 10 phút, tạm dừng phiên và khôi phục có giới hạn nếu đối tác không xác nhận thanh toán. | Đã chốt hiệu lực; giữ chỗ đề xuất P-10 |
 
 ### 5.4. Sau đấu giá
 
@@ -212,14 +217,18 @@ Mã `FR` dùng để truy vết sang user flow và kiểm thử. Các `FR` thể
 |---|---|---|
 | BR-21 | Giá chốt, người mua, người bán và điều kiện giao dịch của phiên thắng được giữ nguyên trong giao dịch; sửa đổi về sau phải theo một sự kiện nghiệp vụ có dấu vết. | Đề xuất MVP |
 | BR-22 | Chỉ bằng chứng thanh toán từ nguồn được tin cậy theo mô hình đã chọn mới xác nhận `đã thanh toán`; ảnh chụp chuyển khoản hoặc URL quay về không đủ nếu chưa được đối soát. | Đề xuất MVP |
-| BR-23 | P-11 đề xuất người thắng trả trong 48 giờ, nhắc sau 24 giờ; quá hạn hủy và cho người bán đăng lại. Không mặc định người thứ hai tự động thắng; P-07 đề xuất hạn chế người tái phạm, chưa phạt tiền tự động. | Đề xuất P-07, P-11 |
+| BR-23 | P-11 đề xuất người thắng trả trong 48 giờ, nhắc sau 24 giờ; quá hạn hủy và cho người bán đăng lại. Không mặc định người thứ hai tự động thắng; tiền đặt trước của người bỏ thanh toán xử lý theo P-07 và BR-41; người tái phạm có thể bị hạn chế đặt giá. | Đề xuất P-11; hướng đã chọn P-07 |
 | BR-24 | Tiền người mua thanh toán phải đi vào cơ chế giữ tiền đã được xác minh và chỉ được giải ngân / hoàn theo điều kiện công bố. Chủ thể giữ tiền, cơ chế pháp lý, phí và đối soát là `TBD`; luồng này chưa sẵn sàng phát hành tới khi có đối tác và rà soát áp dụng. | Đã chốt mục tiêu bảo đảm; chi tiết là cổng phát hành |
 | BR-25 | Trạng thái giao hàng được cập nhật bởi nguồn xác định; cập nhật thủ công phải hiện rõ là tự khai / đã đối soát. | Đề xuất MVP |
-| BR-26 | P-15–18 đề xuất xác minh giao hàng, giữ tiền 7 ngày lịch sau giao, chặn giải ngân khi có tranh chấp đúng hạn, rồi mới đủ điều kiện hoàn tất / đánh giá. | Đề xuất P-15–18; cổng thanh toán |
+| BR-26 | P-15–18 đề xuất xác minh giao hàng, giữ tiền 15 ngày lịch sau giao, chặn giải ngân khi có tranh chấp đúng hạn, rồi mới đủ điều kiện hoàn tất / đánh giá. | Đề xuất P-15–18; cổng thanh toán |
 | BR-27 | Tranh chấp phải gắn một giao dịch và lý do; quyết định giải quyết có người xử lý, căn cứ, thời điểm, kết quả và thông báo. | Đề xuất MVP |
 | BR-28 | Một giao dịch không thể đồng thời ở hai kết quả cuối mâu thuẫn (ví dụ đã hoàn tất và đã hoàn toàn bộ) nếu không có sự kiện điều chỉnh được kiểm soát. | Đề xuất MVP |
 | BR-38 | Một khoản tiền được giữ chỉ được xử lý theo kết quả tài chính nhất quán: giải ngân, hoàn toàn bộ, hoặc chia phần nếu chính sách cho phép; thao tác lặp / phản hồi muộn phải đối soát. | Đề xuất MVP |
 | BR-39 | P-16–17 đề xuất tranh chấp đúng hạn chặn giải ngân; vận hành giải quyết dựa trên chứng cứ và cho kháng nghị qua kênh hỗ trợ. Cách thực thi chặn / giải ngân phụ thuộc đối tác được chọn. | Đề xuất P-16–17; cổng thanh toán |
+| BR-40 | Tiền đặt trước chỉ dùng cho mục đích bảo đảm phiên đó, giữ tách khỏi tiền của nền tảng và chỉ ghi nhận sau xác nhận từ đối tác (tham chiếu Điều 39 khoản 2). Không dùng cho mục đích khác. | Đề xuất D-08; cổng pháp lý và đối tác |
+| BR-41 | Các trường hợp mất tiền đặt trước phải được công bố trước trong quy chế / điều khoản phiên, không thêm sau khi người dùng đã nộp. Tham chiếu các trường hợp ở Điều 39 khoản 6 (nguồn thứ cấp, cần đối chiếu văn bản chính thức): từ chối ký biên bản, rút lại giá, từ chối kết quả, bị truất quyền tham gia. | Đề xuất D-08; cổng pháp lý |
+| BR-42 | Khi hoàn tiền mà người mua không phải trả hàng (hàng nghi giả hoặc chứng cứ rõ), người mua không được bán lại hoặc tặng lại hàng đó, và điều này phải nêu trong điều khoản. Cách xử lý hàng (tiêu hủy, thu hồi) cần chốt khi rà pháp lý. | Đề xuất D-09; cổng pháp lý |
+| BR-43 | Yêu cầu sai sự thật, tráo đổi hoặc trả hàng đã dùng hỏng, và lạm dụng hoàn tiền bị hạn chế quyền yêu cầu hoặc tạm khóa tài khoản theo quy trình công bố trước, có nhật ký và quyền kháng nghị. | Đề xuất D-09 |
 
 ### 5.5. Uy tín, dữ liệu và tuân thủ
 
@@ -271,12 +280,12 @@ Các ví dụ dưới đây giúp QA và PO thấy mức độ chi tiết cần 
 4. **Cạnh tranh đồng thời:** Cho trước hai yêu cầu tới cùng một phiên gần nhau, chỉ các lượt đáp ứng quy tắc trên trạng thái mới nhất được chấp nhận; kết quả chốt phiên có thể kiểm tra lại từ lịch sử.
 5. **Đóng phiên:** Không có giá hợp lệ thì không tạo giao dịch; có người thắng theo quy tắc đã chốt thì tạo đúng một giao dịch, kể cả khi lệnh đóng phiên chạy lặp.
 6. **Thanh toán:** Không đổi sang `đã thanh toán` chỉ vì người mua bấm nút hoặc tải trang thành công; chỉ đổi sau xác nhận từ nguồn đã chọn và lưu mã tham chiếu đối soát.
-7. **Tranh chấp:** Nếu duyệt P-15–17, vụ được mở trong 7 ngày lịch sau giao được xác minh phải lưu chứng cứ và chặn yêu cầu giải ngân; vận hành thấy hạn phản hồi và lịch sử xử lý. Quyền khiếu nại theo quy định áp dụng cần được rà riêng.
+7. **Tranh chấp:** Nếu duyệt P-15–17, vụ được mở trong 15 ngày lịch sau giao được xác minh phải lưu chứng cứ và chặn yêu cầu giải ngân; vận hành thấy hạn phản hồi và lịch sử xử lý. Quyền khiếu nại theo quy định áp dụng cần được rà riêng.
 8. **Mua ngay:** Sau lượt giá hợp lệ đầu tiên, không thể mua ngay. Nếu mua ngay được chốt trước, chỉ một giao dịch được tạo cho lô hàng; lượt đặt giá gửi đồng thời không tạo thêm người thắng. Khi mua ngay thất bại do hết hiệu lực hoặc lô đã bán, người mua thấy lý do và không bị tạo giao dịch.
-9. **Giữ và giải ngân tiền:** Xác nhận người mua đã trả không tự động đổi trạng thái sang `đã giải ngân`. Nếu duyệt P-15–17, chỉ khi có bằng chứng giao và đã qua cửa sổ 7 ngày không tranh chấp thì mới đủ điều kiện gửi lệnh giải ngân; lệnh giải ngân / hoàn lặp không làm tiền chuyển hai lần.
+9. **Giữ và giải ngân tiền:** Xác nhận người mua đã trả không tự động đổi trạng thái sang `đã giải ngân`. Nếu duyệt P-15–17, chỉ khi có bằng chứng giao và đã qua cửa sổ 15 ngày không tranh chấp thì mới đủ điều kiện gửi lệnh giải ngân; lệnh giải ngân / hoàn lặp không làm tiền chuyển hai lần.
 10. **Giữ chỗ mua ngay:** Nếu duyệt P-10, khi A giữ chỗ thì B không thể đặt giá; thanh toán A được xác nhận trong 10 phút tạo đúng một giao dịch. Hết hạn, phiên mở lại với ít nhất 2 phút còn lại và không có người thắng / thanh toán giả.
 11. **Gia hạn sát giờ:** Phiên đóng lúc 20:00, giá hợp lệ xác nhận lúc 19:59:30 thì giờ đóng mới là 20:01:30; giá tiếp lúc 20:00:45 thì giờ đóng mới là 20:02:45. Giá bị từ chối không gia hạn.
-12. **Bỏ thanh toán:** Nếu duyệt P-11, người thắng quá hạn thì giao dịch chuyển sang hủy với lý do, người bán được thông báo và có thể đăng lại. Khi D-08 chưa quyết định, hệ thống không tự trao quyền mua cho người đặt giá thứ hai. Cảnh báo hoặc hạn chế tài khoản được ghi nhật ký theo P-07.
+12. **Bỏ thanh toán (tầng B):** Nếu duyệt P-11, người thắng quá hạn thì giao dịch chuyển sang hủy với lý do, người bán được thông báo và có thể đăng lại; tiền đặt trước xử lý theo P-07 và BR-41, có nhật ký. Khi FR-24 chưa có quy tắc, hệ thống không tự trao quyền mua cho người đặt giá thứ hai. Hạn chế tài khoản được ghi nhật ký.
 
 ## 8. Yêu cầu chất lượng và dữ liệu
 
@@ -314,10 +323,10 @@ Danh mục hàng cấm / hạn chế cuối cùng, tài liệu xác minh theo t�
 |---|---|---|
 | P-05 | Người bán chọn thời lượng phiên **3, 5 hoặc 7 ngày**; mặc định 7 ngày. Thời điểm mở / đóng công bố trước khi có giá; gia hạn 2 phút cuối theo BR-17 đã chốt vẫn áp dụng. | FR-12–19; BR-08, BR-17 |
 | P-06 | Giá khởi điểm và giá đặt là số nguyên VND, bội số 1.000 VND; giá khởi điểm tối thiểu 10.000 VND. Lượt đầu phải `≥ giá khởi điểm`. Sau đó, người mua khác phải đặt `≥ giá dẫn đầu + bước giá theo bậc` trong bảng dưới. Không cho người đang dẫn đầu tự nâng giá của mình. Hai lượt bằng giá không cùng được nhận; lượt đến sau phải trả theo giá tối thiểu mới. | FR-14–17; BR-13–15 |
-| P-07 | Không yêu cầu đặt cọc cho MVP; không tự động coi lượt đặt giá là thanh toán. Tài khoản bỏ thanh toán bị cảnh báo, tái phạm thì tạm hạn chế đặt giá theo quy trình vận hành công bố. Không đưa ra điểm phạt tự động khi chưa có dữ liệu thử nghiệm. | BR-11, BR-23; FR-24, FR-35 |
+| P-07 | **PO chọn hướng (2026-11-09): kiểm soát bỏ thanh toán bằng tiền đặt trước, làm giống cơ chế Điều 39 Luật Đấu giá tài sản.** Áp dụng ở **tầng B** (tiền thật qua đối tác); tầng A không thu hoặc giữ tiền qua nền tảng nên không có tiền đặt trước do hệ thống quản lý (xem 01b). Hướng tham chiếu: tiền đặt trước nằm trong khoảng 5%–20% giá khởi điểm; giữ tách riêng, không dùng cho mục đích khác; người không thắng được hoàn trong 3 ngày làm việc sau khi phiên kết thúc; người thắng được chuyển thành khoản đảm bảo / trả trước cho giao dịch; người bỏ thanh toán, rút giá hoặc từ chối kết quả mất khoản này theo quy tắc công bố trước. **Chưa chốt:** tỷ lệ cụ thể, thời điểm thu (Điều 39 gắn với "ngày mở cuộc đấu giá", khó áp nguyên văn cho phiên 3–7 ngày), người nhận khoản bị mất (luật: người có tài sản), tính hợp pháp theo phân loại pháp lý. Không tự động coi lượt đặt giá là thanh toán. Người tái phạm tạm hạn chế đặt giá theo quy trình công bố. | BR-11, BR-23, BR-40–41; FR-24, FR-35, FR-44–45 |
 | P-08 | Người mua không tự rút giá. Có thể yêu cầu vận hành hủy lượt giá vì nhập nhầm số rõ ràng hoặc người bán thay đổi thông tin trọng yếu; vận hành ghi bằng chứng, lý do, thời điểm và thông báo những người bị ảnh hưởng. Nếu việc hủy thay đổi giá dẫn đầu, tính lại từ lịch sử còn hợp lệ. | BR-16; FR-15–19 |
 | P-09 | Người bán tự dừng tin trước lượt giá đầu tiên nếu hàng không còn. Sau lượt giá đầu tiên, chỉ vận hành được dừng vì hàng mất / hỏng, tin sai trọng yếu, nghi gian lận hoặc yêu cầu có căn cứ khác; không được biến việc dừng thành bán cho người dẫn đầu. Mọi người đặt giá được thông báo. | BR-09–10, BR-20; FR-19 |
-| P-10 | Giá mua ngay tối thiểu bằng `giá khởi điểm + một bước giá tại giá khởi điểm`; chỉ hiện khi chưa có giá hợp lệ. Khi người mua xác nhận, giữ chỗ độc quyền **10 phút** và tạm dừng nhận giá / đồng hồ phiên. Thanh toán được đối tác xác nhận trong hạn thì bán ở giá mua ngay; nếu hết hạn / thất bại, trả lại trạng thái chưa có giá, tiếp tục thời gian còn lại trước khi giữ chỗ, nhưng tối thiểu còn 2 phút. Mỗi tài khoản chỉ được một lần giữ chỗ thất bại cho một phiên; mọi thay đổi được thông báo trên trang phiên. | FR-38–40; BR-35–37 |
+| P-10 | Giá mua ngay tối thiểu bằng `giá khởi điểm + một bước giá tại giá khởi điểm`; chỉ hiện khi chưa có giá hợp lệ. Tầng A: xác nhận mua ngay hợp lệ tạo ngay một giao dịch thử nghiệm, hai bên tự thanh toán bên ngoài; hệ thống không chờ hoặc xác nhận tiền. Tầng B: khi người mua xác nhận, giữ chỗ độc quyền **10 phút** và tạm dừng nhận giá / đồng hồ phiên. Thanh toán được đối tác xác nhận trong hạn thì bán ở giá mua ngay; nếu hết hạn / thất bại, trả lại trạng thái chưa có giá, tiếp tục thời gian còn lại trước khi giữ chỗ, nhưng tối thiểu còn 2 phút. Mỗi tài khoản chỉ được một lần giữ chỗ thất bại cho một phiên; mọi thay đổi được thông báo trên trang phiên. | FR-38–40; BR-35–37 |
 
 **Bậc bước giá P-06 (đề xuất, tính theo giá dẫn đầu trước lượt mới):**
 
@@ -339,7 +348,7 @@ Ví dụ: giá khởi điểm 90.000 VND, lượt đầu có thể là 90.000 VN
 | P-12 | Người mua trả qua đối tác thanh toán; tiền vào cơ chế bảo đảm của đối tác / chủ thể được phép đã xác minh. AuctionNoow ghi riêng `đã trả`, `đang giữ`, `đủ điều kiện giải ngân`, `đã giải ngân`, `đang hoàn`, `đã hoàn`. Chỉ dùng trạng thái có thể đối soát từ đối tác. **Không chọn sẵn nhà cung cấp, tài khoản hay cách pháp lý giữ tiền.** | FR-22–25, FR-41–43; BR-22, BR-24, BR-38 |
 | P-13 | Người bán chọn một đơn vị trong danh sách vận chuyển được nền tảng chấp nhận, bàn giao hàng có mã theo dõi trong **3 ngày làm việc** sau khi khoản tiền được xác nhận đang giữ. Người bán nhập mã vận đơn; trạng thái `đã giao` chỉ lấy từ nhà vận chuyển hoặc bằng chứng được vận hành kiểm tra, không chỉ từ lời người bán. Giai đoạn đầu chưa hỗ trợ tự giao / gặp mặt vì thiếu bằng chứng độc lập. | FR-26–29; BR-25 |
 | P-14 | Phí vận chuyển do người mua trả theo số hiển thị trước khi đặt giá / mua ngay, trừ khi tin ghi miễn phí và người bán chịu. Không tự thay phí sau khi có giá hợp lệ; nếu phí thực tế thay đổi trọng yếu, cần bên mua đồng ý hoặc xử lý hủy theo chính sách. | FR-06–07, FR-21, FR-26 |
-| P-15 | Sau khi nhà vận chuyển xác nhận giao, bắt đầu **7 ngày lịch** kiểm tra hàng. Nếu không có tranh chấp hợp lệ, hết ngày thứ 7 giao dịch đủ điều kiện giải ngân và hoàn tất theo kết quả đối tác. Bấm “đã nhận” trước hạn không tự rút ngắn 7 ngày. Nếu chưa có bằng chứng giao đáng tin cậy thì chưa tự giải ngân. | FR-29, FR-41–43; BR-26, BR-38–39 |
+| P-15 | Sau khi nhà vận chuyển xác nhận giao, bắt đầu **15 ngày lịch** để người mua kiểm tra hàng và yêu cầu trả hàng / hoàn tiền (PO chọn hướng giống Shopee ngày 2026-11-09; mức 15 ngày lấy theo các bài báo về chính sách Shopee từ 2024, chưa đối chiếu trang chính thức). Nếu không có tranh chấp hợp lệ, hết ngày thứ 15 giao dịch đủ điều kiện giải ngân và hoàn tất theo kết quả đối tác. Bấm “đã nhận” trước hạn không tự rút ngắn 15 ngày (còn mở: có cho giải ngân sớm khi người mua xác nhận hài lòng không, xem D-09). Nếu chưa có bằng chứng giao đáng tin cậy thì chưa tự giải ngân. | FR-29, FR-41–43; BR-26, BR-38–39 |
 
 Thời hạn P-15 chỉ là cửa sổ **giữ tiền của sản phẩm đề xuất**, không tự giới hạn quyền khiếu nại / yêu cầu theo quy định áp dụng. Trước khi dùng P-11–15 với tiền thật phải có đối tác hỗ trợ giữ, đối soát, giải ngân, hoàn tiền và phục vụ nhiều người bán theo hợp đồng; phải rà mô hình pháp lý, phí, thuế, xử lý hoàn / chargeback và khả năng giữ tiền khi tranh chấp. Nếu không đáp ứng, **không tự đổi sang thu tiền vào tài khoản cá nhân hoặc trả thẳng người bán**.
 
@@ -347,33 +356,66 @@ Thời hạn P-15 chỉ là cửa sổ **giữ tiền của sản phẩm đề x
 
 | Mã | Phương án đề xuất | Tác động |
 |---|---|---|
-| P-16 | Người mua được mở tranh chấp trong 7 ngày lịch sau mốc giao được xác minh, hoặc khi quá hạn gửi / vận chuyển và hàng chưa tới. Vụ mở đúng hạn tạm chặn giải ngân; người bán có 3 ngày làm việc để phản hồi. Vận hành quyết định trong mục tiêu 5 ngày làm việc sau khi đủ chứng cứ, hoặc báo lý do kéo dài. Mỗi bên có thể kháng nghị một lần trong 48 giờ từ quyết định, kèm chứng cứ mới; tiền vẫn bị chặn cho tới khi kháng nghị đúng hạn được giải quyết. | FR-30–32; BR-26–27, BR-39 |
+| P-16 | Người mua được mở tranh chấp trong 15 ngày lịch sau mốc giao được xác minh, hoặc khi quá hạn gửi / vận chuyển và hàng chưa tới. Vụ mở đúng hạn tạm chặn giải ngân; người bán có 3 ngày làm việc để phản hồi. Vận hành quyết định trong mục tiêu 5 ngày làm việc sau khi đủ chứng cứ, hoặc báo lý do kéo dài. Mỗi bên có thể kháng nghị một lần trong 48 giờ từ quyết định, kèm chứng cứ mới; tiền vẫn bị chặn cho tới khi kháng nghị đúng hạn được giải quyết. | FR-30–32; BR-26–27, BR-39 |
 | P-17 | Kết quả có thể là tiếp tục giải ngân, hoàn toàn bộ sau trả hàng (nếu cần), hoàn một phần khi hai bên đồng ý, hoặc hủy / hoàn vì không giao hàng. Quyết định và chứng cứ phải lưu; khoản tiền chỉ chuyển sau xác nhận của đối tác. Tranh chấp phát sinh sau giải ngân phải đi theo quy trình riêng, không hứa có thể thu hồi tiền ngay. | FR-31–32, FR-41–43; BR-27–28, BR-38–39 |
 | P-18 | Mỗi bên được đánh giá đối tác **một lần trên một giao dịch đã hoàn tất**, trong 30 ngày, thang 1–5 sao kèm nhận xét; không sửa điểm sau khi gửi, nhưng có thể báo cáo đánh giá vi phạm. Đánh giá bị tranh chấp được giữ ẩn tới khi vụ việc đóng. | FR-33; BR-29 |
 | P-19 | Đợt thử nghiệm kín chưa thu phí nền tảng; phí do đối tác thanh toán / vận chuyển thu phải được hiển thị đúng bên chịu trước khi giao dịch. Sau thử nghiệm mới quyết định phí giao dịch. Chính sách giá cuối cùng cần rà hợp đồng và thuế. | FR-07, FR-21; mô hình kinh doanh |
 | P-20 | Vận hành duyệt tin theo P-04, nhận báo cáo gian lận, có thể tạm ẩn tin hoặc khóa quyền đặt giá / bán hàng với lý do và nhật ký. Người dùng có đường liên hệ và gửi kháng nghị; hành động ảnh hưởng tiền / kết quả phiên phải được xem xét riêng, không tự sửa dữ liệu lịch sử. | FR-09, FR-34–37; BR-20, BR-31–32 |
+| P-21 | **PO chọn hướng (2026-11-09): chính sách bảo vệ người mua giống Shopee.** Áp dụng ở **tầng B**. (1) Người mua có **15 ngày lịch** kể từ khi giao được xác minh để yêu cầu trả hàng / hoàn tiền (P-15). (2) Lý do hợp lệ: không nhận được hàng; hàng hỏng, thiếu hoặc sai sản phẩm; không đúng mô tả trong tin (tình trạng, khiếm khuyết, xuất xứ); nghi hàng giả hoặc nhái. **Không có lý do "đổi ý"**: đây là chỗ khác Shopee, vì lượt thắng đấu giá đã ràng buộc và hàng thường là hàng cũ hoặc sưu tầm (điều chỉnh, cần PO duyệt). (3) Nền tảng đứng giữa: vận hành xem bằng chứng (ảnh, video mở hộp, bản mô tả đã khóa theo BR-09, lịch sử hai bên) rồi quyết định. (4) Kết quả: hoàn sau khi trả hàng; hoàn không cần trả hàng khi chứng cứ rõ hoặc hàng nghi giả cần xử lý; hoàn một phần nếu hai bên đồng ý; từ chối nếu thiếu chứng cứ. Không mặc định hoàn không cần trả hàng chỉ vì người mua chọn lý do hàng giả; vận hành xét thêm lịch sử và dấu hiệu gian lận (FR-48). (5) Người mua không chịu phí trả hàng khi yêu cầu được chấp nhận; chi phí này và khoản hoàn do người bán chịu (cơ chế thu hồi từ người bán chưa chốt, xem D-09). (6) Người bán khiếu nại quyết định trong 48 giờ (P-16). (7) Hàng giả phát hiện sau 15 ngày: không hoàn tự động; người mua báo cáo qua FR-34 và giữ quyền theo luật; vận hành xử lý người bán. PO cần quyết định có hỗ trợ hoàn trong trường hợp này không (D-09). | FR-30–34, FR-46–48; BR-42–43 |
 
-P-16–20 là quy tắc vận hành MVP đề xuất. Quy chế, điều khoản giao dịch, hàng cấm, bảo vệ dữ liệu và xử lý người bán phải được soạn / rà theo quy định hiện hành trước khi thử nghiệm có giao dịch thật. Số ngày và thang điểm ở đây không lấy nguyên từ Shopee, eBay hoặc Catawiki.
+P-16–20 là quy tắc vận hành MVP đề xuất. Quy chế, điều khoản giao dịch, hàng cấm, bảo vệ dữ liệu và xử lý người bán phải được soạn / rà theo quy định hiện hành trước khi thử nghiệm có giao dịch thật. Cửa sổ 15 ngày ở P-15 và P-16 theo hướng PO chọn giống Shopee (D-09); các số khác ở đây là đề xuất riêng của AuctionNoow, không lấy nguyên từ Shopee, eBay hoặc Catawiki.
 
-### 9.5. Kiểm soát việc người thắng bỏ thanh toán — dữ liệu tham khảo, chờ PO quyết định (D-08)
+### 9.5. Kiểm soát việc người thắng bỏ thanh toán — PO chọn hướng tiền đặt trước (D-08)
 
-Mục này **không thay đổi** P-07, P-11 hay FR-24. Nó ghi lại cách một số nền tảng và luật đấu giá xử lý để PO chọn. Thông tin lấy từ trang trợ giúp và bài tổng hợp công khai (nguồn ở mục 11, kiểm tra ngày 2026-11-07); chính sách có thể thay đổi nên phải đối chiếu lại khi triển khai.
+Mục này ghi dữ liệu tham khảo cách các nền tảng và luật đấu giá xử lý. **Ngày 2026-11-09 PO chọn phương án 3 (tiền đặt trước, làm giống luật Việt Nam)**; kết luận và việc còn mở ở cuối mục. Thông tin lấy từ trang trợ giúp và bài tổng hợp công khai (nguồn ở mục 11, kiểm tra ngày 2026-11-07); chính sách có thể thay đổi nên phải đối chiếu lại khi triển khai.
 
 | Nguồn | Hạn trả sau khi thắng | Kiểm soát trước khi thắng | Khi không trả |
 |---|---|---|---|
 | Catawiki | 3 ngày sau khi phiên đóng | Giữ một khoản trên thẻ (bid reservation) khi kích hoạt theo điều kiện tài khoản và ngưỡng giá, ví dụ người chưa từng mua trên nền tảng; trang trợ giúp ghi tổng khoản giữ không vượt 1.000 euro | Hủy bán, chặn đặt giá và mua; vẫn phải trả phí bảo vệ người mua; lô có thể được mời lại cho người đặt giá thứ hai và thứ ba; lô giá trị lớn có thể chuyển thu hồi nợ |
 | eBay | Khoảng 4 ngày | Không đặt cọc theo chính sách chung; eBay có thử tự động thu tiền ngay khi phiên kết thúc tại một số thị trường (thông báo cho người bán ở Anh năm 2023) | Hủy đơn chưa trả; người bán có thể chuyển cho người đặt giá kế tiếp; ghi nhận lên tài khoản người mua và có thể hạn chế quyền mua; người bán được xem xét hoàn phí |
-| Luật Đấu giá tài sản 2016 (sửa đổi 2024) | Theo quy chế từng cuộc đấu giá | Tiền đặt trước bắt buộc | Theo Điều 39, người từ chối kết quả trúng, từ chối ký biên bản hoặc rút lại giá không được nhận lại tiền đặt trước. Áp dụng cho AuctionNoow hay không phụ thuộc phân loại pháp lý, chưa kết luận |
+| Luật Đấu giá tài sản 2016 (kiểm tra văn bản hiện hành, vì có đề xuất sửa đổi) | Theo quy chế từng cuộc đấu giá | Tiền đặt trước bắt buộc: 5%–20% giá khởi điểm; vào tài khoản thanh toán riêng của tổ chức đấu giá; thu trong 3 ngày làm việc trước ngày mở cuộc đấu giá, trừ khi thỏa thuận khác; không được dùng cho mục đích khác; có thể thay bằng bảo lãnh ngân hàng | Người không trúng được hoàn trong 3 ngày làm việc; người trúng thì khoản này chuyển thành tiền đặt cọc; người từ chối ký biên bản, rút giá hoặc từ chối kết quả không được nhận lại, khoản đó thuộc người có tài sản đấu giá (nguồn thứ cấp, kiểm tra 2026-11-09). Áp dụng cho AuctionNoow hay không phụ thuộc phân loại pháp lý, chưa kết luận |
 
-**Phương án để PO chọn (chưa chọn):**
+**Phương án (PO chọn phương án 3 ngày 2026-11-09; phương án 1 và 2 giữ lại để so sánh):**
 
 | Phương án | Mô tả | Cần có | Rủi ro |
 |---|---|---|---|
-| 1 — Giữ P-07 (không cọc) | Chỉ cảnh báo và hạn chế tài khoản sau vi phạm | Không cần tích hợp thêm | Tỷ lệ bỏ thanh toán có thể cao; thiệt hại đã xảy ra trước khi chế tài |
+| 1 — Không đặt trước (nội dung P-07 trước 2026-11-09) | Chỉ cảnh báo và hạn chế tài khoản sau vi phạm | Không cần tích hợp thêm | Tỷ lệ bỏ thanh toán có thể cao; thiệt hại đã xảy ra trước khi chế tài |
 | 2 — Giữ chỗ trên phương thức thanh toán theo điều kiện | Chỉ áp dụng cho tài khoản mới hoặc khi giá vượt ngưỡng; giải phóng khi không thắng | Đối tác thanh toán hỗ trợ giữ chỗ; PO chốt ngưỡng và điều kiện | Tăng độ phức tạp; có thể giảm số người đặt giá |
 | 3 — Tiền đặt trước | Người đặt giá nộp trước, mất khi bỏ | Cơ chế giữ tiền đã xác minh; rà pháp lý về tính chất đặt trước / đặt cọc | Phụ thuộc cổng pháp lý và cổng giữ tiền ở D-04 |
 
 **Các điểm cần quyết định kèm theo:** hạn trả của người thắng (P-11 hiện đề xuất 48 giờ; hai nền tảng trên dùng 3 đến 4 ngày); có cho phép mời người đặt giá kế tiếp trong thời hạn ngắn không (FR-24 hiện chỉ nói không tự trao quyền khi chưa có quy tắc, chưa cấm); người bỏ thanh toán có phải chịu khoản phí không hoàn không; mức hạn chế tài khoản khi tái phạm.
+
+**Kết luận PO chọn (2026-11-09) và hệ quả thiết kế:**
+- Tiền đặt trước chỉ chạy được khi có đối tác giữ tiền riêng (cổng D-04) và đã rà pháp lý. Vì vậy tầng A không thể chặn bỏ thanh toán, chỉ đo tỷ lệ bỏ (xem 01b).
+- Điều 39 viết cho cuộc đấu giá có một ngày mở và một ngày kết thúc do tổ chức đấu giá tổ chức. AuctionNoow là sàn nhiều phiên kéo dài 3–7 ngày, mỗi phiên cần một khoản đặt trước riêng. Hai điểm cần thiết kế lại cho hợp: thời điểm thu (đề xuất: trước lượt giá đầu tiên của người đó trên phiên, cần luật sư xác nhận) và cách xử lý nhiều phiên đồng thời của một người.
+- Nếu AuctionNoow không thuộc diện đấu giá tài sản, khoản này nhiều khả năng được xem là đặt cọc theo luật dân sự, với quy tắc xử lý riêng. Cần luật sư xác nhận trước khi dùng thuật ngữ trong điều khoản.
+- Đặt trước làm tăng ma sát: người mua phải nộp tiền trước khi đặt giá. Chỉ số cần theo dõi: tỷ lệ người xem chuyển thành người đặt giá.
+- Còn mở, cần PO chốt: tỷ lệ cụ thể trong khoảng 5%–20% (hoặc dùng ngưỡng cố định cho hàng giá thấp, vì 5% của 10.000 VND rất nhỏ), hạn trả P-11, việc mời người đặt giá kế tiếp (FR-24), người nhận khoản bị mất (luật: người bán; sàn có thu phí xử lý không).
+
+### 9.6. Bảo vệ người mua — PO chọn hướng giống Shopee (D-09)
+
+Ngày 2026-11-09 PO chọn làm chính sách bảo vệ người mua giống Shopee. Cột Shopee lấy từ các bài báo và hướng dẫn công khai (nguồn ở mục 11), chưa đối chiếu được trang trợ giúp chính thức của Shopee, và chính sách này đã đổi nhiều lần.
+
+| Nội dung | Shopee (theo các nguồn trên) | AuctionNoow (D-09) |
+|---|---|---|
+| Cửa sổ yêu cầu trả hàng / hoàn tiền | 15 ngày kể từ khi giao thành công, áp dụng từ 26/02/2024 | 15 ngày lịch từ khi giao được xác minh (P-15, P-16) |
+| Lý do | Hàng lỗi, sai mô tả, hết hạn và cả "thay đổi quyết định" ở một số sản phẩm; có nguồn ghi Shopee gần đây thu hẹp lý do này (chưa xác minh) | Không có "đổi ý" (P-21) |
+| Ai quyết định | Shopee đứng giữa kiểm tra và xử lý | Vận hành AuctionNoow (FR-47) |
+| Hàng giả, nhái | Không hoàn chỉ dựa vào lý do được chọn; xét lịch sử mua hàng và dấu hiệu gian lận | Giống (FR-48) |
+| Phí trả hàng | Người mua không chịu | Giống, người bán chịu (cơ chế thu hồi chưa chốt) |
+| Người bán khiếu nại | Trong 2 ngày | 48 giờ (P-16) |
+| Tiền | Có phản ánh người bán thiếu vốn khi thời hạn kéo dài | Giữ qua đối tác tới hết 15 ngày (P-15), chưa giải ngân sớm |
+
+**Chỗ AuctionNoow khác Shopee, cần PO duyệt:**
+- Không có lý do đổi ý, vì lượt thắng đấu giá đã ràng buộc người thắng và hàng phần lớn là hàng cũ hoặc sưu tầm.
+- Bản mô tả đã khóa của tin (BR-09) là căn cứ chính khi xét "không đúng mô tả", vì người bán không được đổi nội dung trọng yếu sau lượt giá đầu tiên.
+- Quyết định thủ công ở giai đoạn thử nghiệm; chưa có công cụ tự động phát hiện gian lận.
+
+**Còn mở (D-09):**
+- Hàng giả phát hiện sau 15 ngày. Hàng giả thường lộ muộn; các sàn khác dùng 30 ngày (Whatnot) hoặc 90 ngày (Amazon). Cửa sổ 15 ngày có thể để người mua thiệt, nên cần quyết định có hỗ trợ ngoài cửa sổ hay không.
+- Cơ chế thu hồi tiền hoàn từ người bán: giữ tiền người bán, ký quỹ hoặc đòi sau, vì hoàn cho người mua trước khi người bán đồng ý cần có nguồn tiền.
+- Có cho giải ngân sớm khi người mua xác nhận hài lòng không.
+- Nghĩa vụ của nền tảng theo Luật Bảo vệ quyền lợi người tiêu dùng 2023: nền tảng trung gian có thể phải chịu chung trách nhiệm nếu biết người bán vi phạm mà không xử lý kịp. Cần kênh báo cáo, quy trình xử lý nhanh và nhật ký việc đã làm (BR-31, BR-32). Đã đọc qua bài của Bộ Công Thương và báo chí, chưa đọc văn bản luật.
 
 ## 10. Quyết định PO cần đưa ra, theo thứ tự ưu tiên
 
@@ -386,7 +428,8 @@ Mục này **không thay đổi** P-07, P-11 hay FR-24. Nó ghi lại cách mộ
 | D-05 | PO duyệt / chỉnh vận chuyển, phí và chứng cứ giao ở P-13–14. | FR-26–29, BR-25–26 |
 | D-06 | PO duyệt / chỉnh xử lý tranh chấp, đánh giá, phí thử nghiệm và vận hành ở P-16–20. | FR-30–37, BR-27–31 |
 | D-07 | PO chọn quy mô thử nghiệm, ngân sách, lịch phát hành và kênh hỗ trợ. Các chỉ tiêu hiệu năng / bảo mật cụ thể chuyển sang file 05 sau khi biết quy mô. | NFR và kế hoạch thử nghiệm |
-| D-08 | PO chọn cách kiểm soát người thắng bỏ thanh toán (phương án 1, 2 hoặc 3 ở mục 9.5), hạn trả, việc mời người đặt giá kế tiếp và chế tài. | FR-24, BR-11, BR-23; P-07, P-11 |
+| D-08 | **PO đã chọn hướng (2026-11-09): phương án 3, tiền đặt trước theo cơ chế Điều 39.** Còn mở: tỷ lệ cụ thể, thời điểm thu, người nhận khoản bị mất, hạn trả (P-11), mời người đặt giá kế tiếp (FR-24), xác minh pháp lý. | FR-24, FR-44–45, BR-11, BR-23, BR-40–41; P-07, P-11 |
+| D-09 | **PO đã chọn hướng (2026-11-09): bảo vệ người mua giống Shopee, cửa sổ 15 ngày.** Còn mở: hàng giả phát hiện sau 15 ngày, cơ chế thu hồi tiền hoàn từ người bán, giải ngân sớm khi người mua xác nhận, bỏ lý do "đổi ý" (PO duyệt), xác minh số liệu Shopee từ trang chính thức. | FR-30–32, FR-46–48, BR-26, BR-42–43; P-15, P-16, P-21 |
 
 **Cổng phát hành riêng:** rà phân loại pháp lý của mô hình, xác minh người bán, quy chế nền tảng, chính sách hàng hóa, dữ liệu cá nhân, điều kiện nhà cung cấp thanh toán và nghĩa vụ thuế / hóa đơn theo cách vận hành thực tế. Các mục này chưa thể tuyên bố đạt chỉ bằng tài liệu 02.
 
@@ -404,10 +447,12 @@ Nguồn được kiểm tra ngày 2026-09-30. Chúng cung cấp **khung rà soá
 - [eBay: Buy It Now trong đấu giá](https://www.ebay.com/help/selling-buy-now/listings/selling-buy-now?id=4109) là ví dụ về việc nút mua ngay thường biến mất sau khi có người đặt giá; AuctionNoow áp dụng quy tắc đó vì PO đã chốt, không áp dụng các mức giá hoặc ngoại lệ của eBay.
 - [Catawiki: giá bảo lưu](https://www.catawiki.com/en/help/unsold-lots/the-reserve-price-for-my-object-was-not-met-what-are-my-options), [tự trả giá hộ](https://www.catawiki.com/en/help/max-bids/what-is-a-max-bid-and-how-does-it-work) và [gia hạn cuối phiên](https://www.catawiki.com/en/help/buyer-terms/general-terms-of-use?1519129965=) là các ví dụ để so sánh. [eBay](https://www.ebay.com/help/buying/bidding/bidding?id=4003) cũng cho biết đang thử gia hạn ở một số danh mục; quy tắc 2 phút của AuctionNoow là quyết định riêng của PO.
 - [eBay: thời lượng phiên](https://www.ebay.com/help/Selling/-/Listing_durations_and_timings?id=4652) và [Catawiki: bước giá theo bậc](https://www.catawiki.com/en/help/bidding-basics/how-is-the-next-minimum-bid-calculated) là cơ sở tham khảo cho P-05–06. [eBay: thanh toán ngay khi mua ngay](https://www.ebay.com/help/selling/creating-managing-listings/listings/immediate-payment-works?id=4151) là đối chiếu cho P-10; AuctionNoow đề xuất giữ chỗ có hạn vì phải xử lý việc quay lại từ cổng thanh toán. Các mốc và bậc VND là lựa chọn đề xuất riêng.
-- [Shopee Đảm Bảo](https://help.shopee.vn/portal/4/article/79314) và [chính sách trả hàng / hoàn tiền](https://help.shopee.vn/portal/4/article/77251?seo=1) cho thấy cần phân biệt trạng thái giao hàng, cửa sổ khiếu nại và luồng tiền. P-15–17 là thiết kế đề xuất của AuctionNoow, không sao chép thời hạn hoặc bảo đảm của Shopee.
+- [Shopee Đảm Bảo](https://help.shopee.vn/portal/4/article/79314) và [chính sách trả hàng / hoàn tiền](https://help.shopee.vn/portal/4/article/77251?seo=1) cho thấy cần phân biệt trạng thái giao hàng, cửa sổ khiếu nại và luồng tiền. Từ 2026-11-09 PO chọn làm theo hướng Shopee cho cửa sổ 15 ngày (D-09). AuctionNoow chưa sao chép bảo đảm hoặc mức bồi thường của Shopee, và các số vẫn cần đối chiếu trang chính thức.
 
 - **Bổ sung kiểm tra ngày 2026-11-07 (kiểm soát bỏ thanh toán, mục 9.5):** các trang trợ giúp của [Catawiki về người mua không trả](https://auction.catawiki.com/en/help/seller-payment-issues/what-happens-if-a-buyer-doesn-t-pay), [mời lại người đặt giá thứ hai](https://auction.catawiki.com/en/help/seller-payment-issues/what-happens-if-the-buyer-does-not-pay-for-my-object), [giữ chỗ tiền khi đặt giá](https://auction.catawiki.com/en/help/bidding-basics/what-is-a-bid-reservation) và [khoản giữ tạm trên thẻ](https://www.catawiki.com/en/help/fees/why-is-there-a-temporary-hold-on-my-credit-card-from-catawiki); [chính sách mặt hàng chưa thanh toán của eBay](https://www.ebay.com.au/help/policies/payment-policies/unpaid-item-policy?id=4271) và [thông báo thu tiền khi phiên kết thúc của eBay Anh](https://www.ebay.co.uk/sellercentre/news/2023-september/unpaid-item). Đây là ví dụ cơ chế, không chứng minh con số nào phù hợp thị trường Việt Nam.
+- **Kiểm tra ngày 2026-11-09 (tiền đặt trước, mục 9.5):** [bài của Luật Minh Khuê về mức tiền đặt trước](https://luatminhkhue.vn/quy-dinh-khoan-tien-dat-truoc-de-tham-gia-dau-gia-tai-san-la-bao-nhieu.aspx) tóm tắt Điều 39: mức 5%–20% giá khởi điểm, tài khoản thanh toán riêng, thời hạn thu và hoàn 3 ngày làm việc, khoản đặt trước chuyển thành đặt cọc khi trúng, các trường hợp không được nhận lại. Đây là nguồn thứ cấp; phải đối chiếu văn bản luật chính thức trước khi dùng trong điều khoản.
 - **Điều 39 Luật Đấu giá tài sản:** [bài tổng hợp pháp lý về tiền đặt trước](https://luatminhkhue.vn/quy-dinh-tien-dat-truoc-tham-gia-dau-gia-bien-so-xe-o-to-the-nao.aspx) là nguồn thứ cấp, cần đối chiếu với văn bản chính thức. [Bộ Tư pháp đề xuất sửa đổi luật này trong năm 2026](https://baodauthau.vn/sua-doi-luat-dau-gia-tai-san-che-tai-manh-ngan-ngua-xu-ly-cac-hanh-vi-vi-pham-post197233.html), nên cần kiểm tra lại văn bản hiện hành trước khi dựa vào.
 - **Shopee, thời điểm ghi nhận tiền cho người bán:** [bài tổng hợp bên thứ ba](https://www.misaeshop.vn/?p=40941) mô tả tiền được giữ rồi ghi nhận khi người mua xác nhận hoặc sau 4 ngày kể từ giao thành công. Đây không phải trang chính thức của Shopee; cần đối chiếu help.shopee.vn trước khi dùng làm căn cứ.
 
+- **Bổ sung kiểm tra ngày 2026-11-09 (bảo vệ người mua, mục 9.6):** [chính sách Money Back Guarantee của eBay](https://www.ebay.com/help/policies/ebay-money-back-guarantee-policy/ebay-money-back-guarantee-policy?id=4210) (trang chính thức), [Buyer Protection của Catawiki](https://www.catawiki.com/pages/p/buyer-protection), [Buyer Protection của Whatnot](https://help.whatnot.com/hc/en-us/articles/360061194552). Về Shopee, chỉ có nguồn thứ cấp: [hướng dẫn trả hàng hoàn tiền](https://atpsoftware.vn/huong-dan-khieu-nai-tra-hang-hoan-tien-shopee.html), [bài VTC News về mức 15 ngày](https://vtcnews.vn/bi-phan-doi-vi-chinh-sach-tra-hang-shopee-noi-kiem-soat-chat-nguoi-mua-truc-loi-ar861469.html) và [bài về người bán bị giữ tiền](https://plo.vn/nguoi-ban-hang-buc-xuc-vi-bi-giam-tien-shopee-noi-se-phan-hoi-cu-the-post782305.html). Về luật: [bài của Bộ Công Thương về Luật Bảo vệ quyền lợi người tiêu dùng 2023 và Nghị định 55/2024](https://moit.gov.vn/tin-tuc/bao-chi-voi-nguoi-dan/luat-bao-ve-quyen-loi-nguoi-tieu-dung-nam-2023-va-van-ban-huong-dan-luat-huong-toi-muc-tieu-nang-cao-trach-nhiem-bao-ve-.html). Mọi số ngày và phí chỉ để tham khảo vì từng sàn đổi chính sách thường xuyên.
 **Việc còn thiếu bằng chứng thực địa:** chưa phỏng vấn người mua / bán ở Việt Nam, chưa thử luồng với nhà cung cấp thanh toán / vận chuyển cụ thể và chưa có rà soát pháp lý cho mô hình vận hành đã chọn. Khi có kết quả, cập nhật file này trước khi đánh dấu `Đã chốt` hoặc `sẵn sàng phát hành`.

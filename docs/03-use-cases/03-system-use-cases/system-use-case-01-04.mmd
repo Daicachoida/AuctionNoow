@@ -1,0 +1,71 @@
+flowchart LR
+    Guest["Khách"]
+    User["Người dùng"]
+    Seller["Người bán"]
+    Buyer["Người mua"]
+    Ops["Vận hành"]
+    Messaging["Dịch vụ email / SMS"]
+
+    subgraph AN["AuctionNoow · ranh giới hệ thống"]
+      subgraph B01["BUC-01 · Tài khoản"]
+        U0101(["SUC-01-01 · Đăng ký tài khoản · A,B"])
+        U0102(["SUC-01-02 · Xác thực email · A,B"])
+        U0103(["SUC-01-03 · Xác thực số điện thoại · A,B"])
+        U0104(["SUC-01-04 · Đồng ý điều khoản · A,B"])
+        U0105(["SUC-01-05 · Đăng nhập, đăng xuất, khôi phục · A,B"])
+        U0106(["SUC-01-06 · Xem, sửa hồ sơ cá nhân · A,B"])
+        U0107(["SUC-01-07 · Xem hồ sơ công khai · A,B"])
+      end
+      subgraph B02["BUC-02 · Xác minh người bán"]
+        U0201(["SUC-02-01 · Tạo hồ sơ người bán · A,B"])
+        U0202(["SUC-02-02 · Nộp thông tin xác minh · A,B"])
+        U0203(["SUC-02-03 · Duyệt hồ sơ người bán · A,B"])
+        U0204(["SUC-02-04 · Xác minh lại · A,B"])
+      end
+      subgraph B03["BUC-03 · Đăng hàng, duyệt tin"]
+        U0301(["SUC-03-01 · Tạo bản nháp tin · A,B"])
+        U0302(["SUC-03-02 · Cấu hình phiên · A,B"])
+        U0303(["SUC-03-03 · Xem lại, gửi duyệt · A,B"])
+        U0304(["SUC-03-04 · Duyệt, yêu cầu sửa, từ chối · A,B"])
+        U0305(["SUC-03-05 · Sửa tin theo trạng thái · A,B"])
+        U0306(["SUC-03-06 · Mở phiên theo lịch · A,B"])
+      end
+      subgraph B04["BUC-04 · Tìm, xem, đề xuất"]
+        U0401(["SUC-04-01 · Tìm kiếm, lọc tin · A,B"])
+        U0402(["SUC-04-02 · Xem chi tiết tin · A,B"])
+        U0403(["SUC-04-03 · Đề xuất mặt hàng · Ngoài MVP"])
+      end
+    end
+
+    Guest --- U0101
+    Guest --- U0104
+    Guest --- U0105
+    Guest --- U0107
+    Guest --- U0401
+    Guest --- U0402
+    User --- U0102
+    User --- U0103
+    User --- U0104
+    User --- U0105
+    User --- U0106
+    User --- U0107
+    User --- U0201
+    Buyer --- U0401
+    Buyer --- U0402
+    Seller --- U0202
+    Seller --- U0204
+    Seller --- U0301
+    Seller --- U0302
+    Seller --- U0303
+    Seller --- U0305
+    Ops --- U0203
+    Ops --- U0204
+    Ops --- U0304
+    Ops --- U0305
+    Messaging --- U0101
+    Messaging --- U0102
+    Messaging --- U0103
+    Messaging --- U0105
+
+    classDef excluded fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray:5 5,color:#4b5563
+    class U0403 excluded

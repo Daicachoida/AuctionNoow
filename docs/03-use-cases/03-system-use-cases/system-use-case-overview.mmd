@@ -1,0 +1,33 @@
+flowchart LR
+    Guest["Khách"]
+    User["Người dùng"]
+    Buyer["Người mua / người thắng"]
+    Seller["Người bán"]
+    Ops["Vận hành"]
+    Payment["Đối tác thanh toán · B"]
+    Carrier["Nhà vận chuyển · B"]
+
+    subgraph AN["AuctionNoow · ranh giới hệ thống"]
+      G1(["Tài khoản, tin đăng, tìm kiếm<br/>BUC-01–04 · 20 SUC"])
+      G2(["Đấu giá, chốt và dừng phiên<br/>BUC-05–06, 14 · 12 SUC"])
+      G3(["Thanh toán, giao hàng, hoàn tất<br/>BUC-07–10 · 16 SUC"])
+      G4(["Tranh chấp, đánh giá, vận hành<br/>BUC-11–13 · 15 SUC"])
+    end
+
+    Guest --- G1
+    User --- G1
+    Buyer --- G2
+    Buyer --- G3
+    Buyer --- G4
+    Seller --- G1
+    Seller --- G2
+    Seller --- G3
+    Seller --- G4
+    Ops --- G1
+    Ops --- G2
+    Ops --- G3
+    Ops --- G4
+    Payment --- G2
+    Payment --- G3
+    Payment --- G4
+    Carrier --- G3

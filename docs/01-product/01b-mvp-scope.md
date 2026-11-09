@@ -6,31 +6,33 @@
 |---|---|
 | Dự án | AuctionNoow — marketplace đấu giá, triển khai tại Việt Nam trước |
 | Phiên bản | 0.1 — bản đề xuất MVP chi tiết, chờ PO duyệt |
-| Đầu vào | [01-product-scope.md](01-product-scope.md), [02-requirements-business-rules.md](02-requirements-business-rules.md) |
+| Đầu vào | [01-product-scope.md](01-product-scope.md), [02-requirements-business-rules.md](../02-requirements/02-requirements-business-rules.md) |
 | Mục đích | Xác định chính xác MVP gồm gì, không gồm gì, theo thứ tự nào, và điều kiện để đi tiếp |
 | Chủ quyết định | Chủ dự án / Product Owner (PO) |
 | Trạng thái | `Đề xuất` — chưa có hiệu lực cho đến khi PO ghi nhận |
 
-**Quy ước:** `Đã chốt` = PO đã quyết định; `Đề xuất` = BA đề xuất, chờ PO; `Cổng` = điều kiện bắt buộc phải thỏa trước khi làm việc tương ứng với tiền thật hoặc người dùng thật. Mã FR, BR, P, D lấy từ file 02; file này không tạo mã yêu cầu mới, chỉ chọn và sắp xếp lại.
+**Quy ước:** `Đã chốt` = PO đã quyết định; `Đề xuất` = BA đề xuất, chờ PO; `Cổng` = điều kiện bắt buộc phải thỏa trước khi mở chức năng tương ứng. Giao dịch ngoài nền tảng ở tầng A vẫn có thể dùng tiền thật nhưng không được hệ thống xác nhận hoặc bảo vệ; cổng đối tác và pháp lý áp dụng trước khi tầng B xử lý tiền trên nền tảng. Mã FR, BR, P, D lấy từ file 02; file này không tạo mã yêu cầu mới, chỉ chọn và sắp xếp lại.
 
 ## 2. Tóm tắt quyết định cần PO duyệt
 
-Tài liệu 01 và 02 đã chốt mục tiêu giữ tiền đến khi đủ điều kiện giải ngân. Tuy nhiên, trong thực tế việc này phụ thuộc đối tác thanh toán, khung pháp lý giữ tiền và rà soát luật đấu giá, chưa có cái nào đã hoàn tất. Vì vậy file này đề xuất chia MVP thành hai tầng:
+Tài liệu 01 và 02 đã chốt mục tiêu giữ tiền đến khi đủ điều kiện giải ngân. Tuy nhiên, việc triển khai phụ thuộc đối tác thanh toán, khung pháp lý giữ tiền và rà soát luật đấu giá, chưa có cái nào đã hoàn tất. PO đã chọn triển khai theo hai tầng:
 
-- **Tầng A — Thử nghiệm kín, không tiền thật:** người dùng thật, đăng hàng, đấu giá, chốt người thắng và ghi nhận giao dịch. Thanh toán và giải ngân không đi qua hệ thống; giao dịch được đánh dấu rõ là "thử nghiệm".
+- **Tầng A — Thử nghiệm kín, giao dịch ngoài nền tảng:** người dùng và hàng thật, đăng hàng, đấu giá, chốt người thắng và ghi nhận giao dịch. Hai bên có thể tự thanh toán, giao hàng bên ngoài; tiền thật không đi qua hệ thống và nền tảng không xác nhận, giữ, hoàn, giải ngân hoặc bảo vệ khoản tiền đó. Giao dịch được đánh dấu rõ là "thử nghiệm".
 - **Tầng B — Thanh toán bảo đảm:** chỉ mở khi có đối tác giữ tiền đã ký, đã rà pháp lý và đã thử đối soát (cổng phát hành D-04).
 
 PO cần quyết định:
 
 | Mã | Quyết định | Đề xuất của BA |
 |---|---|---|
-| M-D1 | Chấp nhận tách MVP thành tầng A và tầng B | Có |
-| M-D2 | Tầng A có cho người thắng tự chuyển khoản cho người bán ngoài hệ thống không | Không cho hệ thống nhận tiền. Người thắng và người bán có thể tự thỏa thuận ngoài nền tảng, nhưng khi đó nền tảng không bảo vệ khoản tiền. Trang phiên và trang giao dịch phải hiển thị cảnh báo này rõ ràng, và người dùng phải bấm xác nhận đã đọc |
+| M-D1 | Chấp nhận tách MVP thành tầng A và tầng B | **PO đã chọn (2026-11-09): làm tầng A rồi tầng B.** Tầng A cho phép hai bên tự giao dịch tiền thật ngoài nền tảng; tầng B mới xử lý tiền qua đối tác. M-D3, M-S1, M-D4, M-D5 vẫn chờ |
+| M-D2 | Tầng A có cho người thắng tự chuyển khoản cho người bán ngoài hệ thống không | **PO đã chọn:** có thể tự giao dịch bên ngoài. Hệ thống không nhận, xác nhận hoặc bảo vệ tiền; chỉ lưu lời khai chưa đối soát. Nội dung và cách xác nhận đã đọc cảnh báo vẫn cần duyệt trước khi mở thử nghiệm |
 | M-D3 | Thời điểm mở tầng A cho người dùng ngoài vòng kín | Sau khi đạt tiêu chí ở mục 9 |
+| M-D7 | Bảo vệ người mua (D-09) | **PO đã chọn (2026-11-09):** giống Shopee, cửa sổ 15 ngày, chỉ ở tầng B; không có lý do "đổi ý" (chờ PO duyệt riêng điểm này) |
+| M-D6 | Kiểm soát bỏ thanh toán (D-08) | **PO đã chọn (2026-11-09):** tiền đặt trước theo hướng Điều 39, chỉ ở tầng B |
 | M-D4 | Cơ chế "đồng ý đã đọc cảnh báo" ở M-D2 có cần lưu phiên bản nội dung cảnh báo không | Có. Lưu cùng phiên bản điều khoản theo BR-05 |
 | M-D5 | Mục 11 (chống đặt giá ảo ở mức thủ công) có đưa vào MVP không | Có, ở mức thủ công. Chưa tự động hóa |
 
-Nếu PO không đồng ý tách tầng và muốn giữ tiền ngay trong MVP đầu tiên, thời gian dự kiến phụ thuộc hoàn toàn vào việc có đối tác hay không. Khi đó, BA khuyến nghị đưa việc tìm đối tác thành công việc đầu tiên, trước khi viết code cho thanh toán.
+Việc chọn đối tác giữ tiền cho tầng B được nghiên cứu sau; chỉ mở tầng B khi có hợp đồng, cơ chế đối soát và kết quả rà pháp lý đáp ứng cổng D-04.
 
 ## 3. Mục tiêu của MVP
 
@@ -80,9 +82,9 @@ Cả bốn loại (cá nhân, shop, doanh nghiệp, nhà phân phối) dùng cù
 - Giá khởi điểm và giá đặt: số nguyên VND, bội số 1.000 VND (P-06).
 - Bậc bước giá theo bảng ở P-06 của file 02.
 - Gia hạn 2 phút cuối theo BR-17 đã chốt.
-- Không đặt cọc (P-07). Không giá bảo lưu, không tự trả giá hộ (đã chốt).
+- Tiền đặt trước (P-07, D-08): tầng A không thu hoặc giữ tiền qua nền tảng nên không quản lý tiền đặt trước; tầng B áp dụng theo hướng Điều 39 (PO chọn 2026-11-09), sau khi xác minh pháp lý và đối tác. Không giá bảo lưu, không tự trả giá hộ (đã chốt).
 - Người mua không tự rút giá; vận hành có thể hủy lượt giá có lý do (P-08).
-- Mua ngay: chỉ hiển thị trước lượt giá hợp lệ đầu tiên; giữ chỗ 10 phút; khôi phục phiên có giới hạn (P-10).
+- Mua ngay: chỉ hiển thị trước lượt giá hợp lệ đầu tiên. Tầng A xác nhận mua ngay tạo giao dịch thử nghiệm ngay, hai bên tự thỏa thuận thanh toán bên ngoài; tầng B giữ chỗ 10 phút để chờ đối tác xác nhận thanh toán và khôi phục phiên khi thất bại (P-10).
 
 ### 4.5. Quy tắc thời gian
 
@@ -99,7 +101,7 @@ Thời điểm máy chủ là chuẩn duy nhất (BR-12, NFR-01). Mọi tranh ch
 | Nhiều nhân viên cho một shop | Cần phân quyền riêng | 01 mục 9.3 |
 | Tài sản phải sang tên, hàng số, dịch vụ, hàng dễ hỏng | Cần quy trình và giấy phép riêng | P-02 |
 | Tự giao / gặp mặt | Thiếu bằng chứng độc lập | P-13 |
-| Đặt cọc, điểm phạt tự động | Chưa có dữ liệu thử nghiệm | P-07 |
+| Tiền đặt trước do nền tảng quản lý ở tầng A; điểm phạt tự động | Tầng A không thu hoặc giữ tiền; tiền đặt trước qua đối tác chỉ có ở tầng B. Điểm phạt chưa có dữ liệu thử nghiệm | P-07, D-08 |
 | Đa tiền tệ, quốc tế, livestream | Không thuộc phạm vi thị trường đầu tiên | 01 mục 9.3 |
 | Gợi ý cá nhân hóa, chống gian lận nâng cao | Ưu tiên quy tắc thủ công trước | 01 mục 9.3 |
 
@@ -112,16 +114,16 @@ Luồng dưới đây áp dụng cho cả hai tầng; khác biệt được ghi 
 3. **Đăng hàng:** tạo bản nháp với các trường bắt buộc, ảnh thực tế, tình trạng, khiếm khuyết, phí vận chuyển, chính sách trả hàng (FR-06, P-03). Xem lại tổng thông tin người mua sẽ thấy (FR-07).
 4. **Duyệt tin:** tin vào `chờ duyệt`. Vận hành duyệt thủ công tin đầu tiên và tin bị gắn cờ (FR-09, P-04). Tin không đạt được giữ `cần sửa` kèm lý do (FR-08).
 5. **Mở phiên:** phiên được mở theo thời điểm đã công bố. Hệ thống chụp lại quy tắc áp dụng (FR-12).
-6. **Đặt giá:** người mua gửi giá; hệ thống trả `được chấp nhận` hoặc `bị từ chối` kèm lý do (FR-14, FR-15). Gia hạn 2 phút được áp dụng nếu có (FR-13, BR-17).
+6. **Đặt giá:** (tầng B) người mua nộp tiền đặt trước qua đối tác trước lượt giá đầu tiên trên phiên (FR-44, P-07). Người mua gửi giá; hệ thống trả `được chấp nhận` hoặc `bị từ chối` kèm lý do (FR-14, FR-15). Gia hạn 2 phút được áp dụng nếu có (FR-13, BR-17).
 7. **Mua ngay (nếu bật):** chỉ khả dụng trước lượt giá hợp lệ đầu tiên; giữ chỗ 10 phút (FR-38 đến FR-40).
 8. **Đóng phiên:** khóa nhận giá, xác định kết quả một lần, lưu bằng chứng (FR-17, FR-18, BR-19).
 9. **Tạo giao dịch:** chỉ khi có người thắng hợp lệ; giao dịch gắn với phiên, người thắng, giá chốt và phiên bản điều kiện (FR-20).
 10. **Thanh toán:**
-   - Tầng A: người thắng tự khai đã chuyển khoản ngoài nền tảng. Hệ thống ghi nhận là "người thắng khai, chưa đối soát". Trạng thái này không được coi là `đã thanh toán` theo BR-22 (M-D2).
-   - Tầng B: người thắng trả qua đối tác trong 48 giờ; chỉ đổi trạng thái sau xác nhận từ đối tác (P-11, P-12, BR-22).
+   - Tầng A: hai bên có thể tự chuyển tiền thật bên ngoài. Người thắng khai đã chuyển khoản; hệ thống ghi "người thắng khai, chưa đối soát", không coi là `đã thanh toán` theo BR-22 và không bảo vệ khoản tiền (M-D2).
+   - Tầng B: tiền đặt trước chuyển thành phần đã trả của giá chốt (FR-45); người thắng trả phần còn lại qua đối tác trong 48 giờ; chỉ đổi trạng thái sau xác nhận từ đối tác (P-11, P-12, BR-22).
 11. **Giao hàng:** người bán chọn đơn vị vận chuyển được chấp nhận, bàn giao trong 3 ngày làm việc (P-13). Tầng A: người bán tự khai, hiển thị rõ "tự khai". Tầng B: trạng thái lấy từ nhà vận chuyển.
-12. **Kiểm tra hàng và hoàn tất:** 7 ngày lịch sau giao được xác minh (P-15). Không có tranh chấp thì hoàn tất.
-13. **Tranh chấp (nếu có):** mở trong 7 ngày lịch, người bán phản hồi trong 3 ngày làm việc, vận hành quyết định trong mục tiêu 5 ngày làm việc (P-16, P-17).
+12. **Kiểm tra hàng và hoàn tất:** tầng A vận hành xem bằng chứng hai bên và đóng thủ công thành `hoàn tất thử nghiệm` khi không còn tranh chấp; không xác nhận thanh toán hoặc giải ngân. Tầng B: 15 ngày lịch sau giao được xác minh (P-15, hướng Shopee theo D-09), không có tranh chấp thì đủ điều kiện hoàn tất và giải ngân qua đối tác.
+13. **Tranh chấp (nếu có):** tầng A tiếp nhận và xử lý thủ công, không hoàn tiền qua hệ thống. Tầng B áp dụng cửa sổ 15 ngày và quy trình P-16, P-17; tranh chấp đúng hạn chặn giải ngân.
 14. **Đánh giá:** mỗi bên đánh giá đối tác một lần trong 30 ngày (P-18).
 
 ## 7. Tiêu chí vào và ra cho từng bước
@@ -131,7 +133,7 @@ Luồng dưới đây áp dụng cho cả hai tầng; khác biệt được ghi 
 Tất cả phải đạt:
 - PO đã duyệt file này và các quyết định M-D1, M-D2, M-S1.
 - Danh mục hàng cho thử nghiệm đã chốt, kèm danh sách hàng cấm tối thiểu.
-- Quy chế hoạt động, điều khoản giao dịch và chính sách bảo vệ dữ liệu cá nhân đã được soạn. Chưa cần rà pháp lý sâu hơn cho tầng A, nhưng phải có văn bản.
+- Quy chế hoạt động, điều khoản giao dịch và chính sách bảo vệ dữ liệu cá nhân đã được soạn; phạm vi thử nghiệm với người, hàng và khả năng chuyển tiền thật ngoài nền tảng đã được rà pháp lý trước khi mở cho người dùng.
 - Có ít nhất 20 kịch bản kiểm thử cho luồng đấu giá, trong đó có các kịch bản đặt giá đồng thời và đặt giá sát giờ (mục 9).
 - Có người phụ trách vận hành duyệt tin và xử lý tranh chấp trong giờ làm việc.
 
@@ -142,6 +144,8 @@ Tất cả phải đạt, và đây là cổng phát hành:
 - Đã có kết quả rà soát pháp lý về việc giữ tiền, phân loại mô hình đấu giá theo Luật Đấu giá tài sản và Luật TMĐT 2025 (BR-32).
 - Đã thử thành công việc xác nhận và hủy giữ chỗ mua ngay với đối tác (P-10).
 - Đã thử xác nhận thanh toán trùng lặp và phản hồi đến muộn (FR-23).
+- Chính sách bảo vệ người mua (D-09, P-21, FR-46 đến FR-48) đã được soạn thành quy chế, có kênh báo cáo và quy trình xử lý, và đã quyết định cách xử lý hàng giả phát hiện sau cửa sổ 15 ngày.
+- Cơ chế tiền đặt trước (D-08, FR-44, FR-45, BR-40, BR-41) đã được luật sư xác nhận về tính chất pháp lý, đối tác hỗ trợ giữ riêng, hoàn và xử lý mất đặt trước, và đã thử hoàn tiền sau khi phiên kết thúc.
 
 Nếu không đạt, không tự chuyển sang thu tiền vào tài khoản cá nhân hoặc trả thẳng người bán (file 02, mục 9.3).
 
@@ -175,7 +179,8 @@ MVP được coi là đạt để mở rộng khi:
 |---|---|---|
 | Đấu giá có thể thuộc diện đấu giá tài sản cần tổ chức được cấp phép | Cao | Rà pháp lý trước khi mở tầng A cho người dùng ngoài vòng kín |
 | Người dùng hiểu nhầm nền tảng bảo vệ tiền ở tầng A | Cao | Cảnh báo rõ trên trang phiên và trang thanh toán |
-| Người thắng bỏ thanh toán, đặc biệt khi không đặt cọc (P-07) | Cao | Tầng A đo tỷ lệ bỏ; chọn cách kiểm soát ở D-08 (file 02, mục 9.5) trước khi mở tầng B |
+| Người thắng bỏ thanh toán | Cao | Tầng A không có tiền đặt trước nên chỉ đo tỷ lệ bỏ; tầng B dùng tiền đặt trước theo D-08 (file 02, mục 9.5) sau khi qua cổng pháp lý và đối tác |
+| Tiền đặt trước làm giảm số người đặt giá | Trung bình | Theo dõi tỷ lệ người xem chuyển thành người đặt giá; PO chốt tỷ lệ đặt trước thấp hoặc ngưỡng cố định cho hàng giá thấp |
 | Ít người mua, phiên không có lượt giá | Trung bình | Thử nghiệm kín với số lượng phiên giới hạn, đo tỷ lệ có lượt giá |
 | Đặt giá sát giờ làm hệ thống quá tải hoặc sai kết quả | Trung bình | Kiểm thử đồng thời (mục 9) |
 | Đặt giá ảo, tài khoản giả | Trung bình | Quy tắc thủ công ở mục 11 |
@@ -192,13 +197,13 @@ Vì BR-03 hiện chỉ chặn người bán tự đặt giá, MVP nên bổ sung
 
 ## 12. Các việc cần làm để đưa file này vào hiệu lực
 
-1. PO duyệt hoặc chỉnh M-D1, M-D2, M-D3, M-S1 và mục 11.
+1. Ghi nhận M-D1, M-D2 đã được PO chọn; PO duyệt hoặc chỉnh M-D3, M-S1 và mục 11.
 2. Cập nhật mục 9.2 của file 01 để trỏ sang file này.
 3. Cập nhật trạng thái P-02 đến P-10 trong file 02 khi PO duyệt.
 4. Chốt danh mục hàng thử nghiệm và danh mục cấm tối thiểu.
 5. Bắt đầu rà pháp lý về đấu giá tài sản và trung gian thanh toán, không chờ đến khi viết xong tầng B.
 6. Liên hệ ít nhất hai đối tác giữ tiền để hỏi điều kiện hợp tác và thời gian tích hợp.
-7. PO quyết định D-08 (cách kiểm soát người thắng bỏ thanh toán) trước khi chốt thiết kế luồng thanh toán tầng B.
+7. Chốt các điểm còn mở của D-08 (tỷ lệ đặt trước, thời điểm thu, người nhận khoản bị mất, hạn trả, mời người đặt giá kế tiếp) và xác minh pháp lý trước khi thiết kế luồng thanh toán tầng B.
 
 ## 13. Câu hỏi mở
 
@@ -295,12 +300,12 @@ Chỉ chạy kịch bản này khi PO bật mua ngay trong MVP. Nếu tắt, b�
 | TC | Điều kiện | Thao tác | Kết quả mong đợi |
 |---|---|---|---|
 | TC-50 `[A,B]` | Người bán bật mua ngay, chưa có giá | Xem trang phiên | Hiển thị giá mua ngay, tổng chi phí dự kiến và điều kiện thanh toán bên cạnh đặt giá (FR-38) |
-| TC-51 `[A,B]` | Giá mua ngay 105.000 VND, chưa có giá | Xác nhận mua ngay | Giữ chỗ 10 phút; tạm dừng đồng hồ phiên; người khác không đặt giá được |
-| TC-52 `[A,B]` | Đang giữ chỗ mua ngay | Thanh toán được đối tác xác nhận trong 10 phút | Tạo đúng một giao dịch ở giá mua ngay (P-10) |
-| TC-53 `[A,B]` | Đang giữ chỗ mua ngay | Hết 10 phút, không thanh toán | Trả trạng thái chưa có giá; mở lại với ít nhất 2 phút còn lại; không có người thắng giả |
+| TC-51 `[B]` | Giá mua ngay 105.000 VND, chưa có giá | Xác nhận mua ngay | Giữ chỗ 10 phút; tạm dừng đồng hồ phiên; người khác không đặt giá được |
+| TC-52 `[B]` | Đang giữ chỗ mua ngay | Thanh toán được đối tác xác nhận trong 10 phút | Tạo đúng một giao dịch ở giá mua ngay (P-10) |
+| TC-53 `[B]` | Đang giữ chỗ mua ngay | Hết 10 phút, không thanh toán | Trả trạng thái chưa có giá; mở lại với ít nhất 2 phút còn lại; không có người thắng giả |
 | TC-54 `[A,B]` | Đã có lượt giá hợp lệ đầu tiên | Thử mua ngay | Lựa chọn mua ngay không hiển thị; yêu cầu gửi lên bị từ chối (BR-37) |
-| TC-55 `[A,B]` | Giữ chỗ mua ngay và lượt giá đến gần cùng lúc | Gửi đồng thời | Chỉ một kết quả bán chính thức; giờ trên thiết bị không được dùng để phân xử (BR-36) |
-| TC-56 `[A,B]` | Đã có một lần giữ chỗ thất bại trên phiên | Thử giữ chỗ lần nữa | Từ chối (P-10: mỗi tài khoản một lần thất bại cho một phiên) |
+| TC-55 `[B]` | Giữ chỗ mua ngay và lượt giá đến gần cùng lúc | Gửi đồng thời | Chỉ một kết quả bán chính thức; giờ trên thiết bị không được dùng để phân xử (BR-36) |
+| TC-56 `[B]` | Đã có một lần giữ chỗ thất bại trên phiên | Thử giữ chỗ lần nữa | Từ chối (P-10: mỗi tài khoản một lần thất bại cho một phiên) |
 
 ### 14.7. Tạo giao dịch và thanh toán (FR-20 đến FR-25, BR-21 đến BR-24)
 
@@ -308,12 +313,12 @@ Chỉ chạy kịch bản này khi PO bật mua ngay trong MVP. Nếu tắt, b�
 |---|---|---|---|
 | TC-57 `[A,B]` | Phiên có người thắng | Hệ thống tạo giao dịch | Giao dịch gắn đúng phiên, người thắng, người bán, giá chốt và phiên bản điều kiện (FR-20) |
 | TC-58 `[A,B]` | Giao dịch vừa tạo | Xem thông tin người thắng | Thấy số tiền, phí vận chuyển nếu có và hạn thanh toán (FR-21) |
-| TC-59 `[A]` | Người thắng bấm "đã chuyển khoản ngoài nền tảng" | Xác nhận | Ghi nhận `người thắng khai, chưa đối soát`; không ghi `đã thanh toán`; không chuyển sang `đã giải ngân`; không tính vào chỉ số thanh toán (BR-22, M-D2) |
+| TC-59 `[A]` | Người thắng bấm "đã chuyển khoản ngoài nền tảng" sau khi có thể đã chuyển tiền thật | Xác nhận | Ghi nhận `người thắng khai, chưa đối soát`; không ghi `đã thanh toán`; không chuyển sang `đã giải ngân`; không tính vào chỉ số thanh toán (BR-22, M-D2) |
 | TC-60 `[A]` | Người thắng tải trang thành công | Không có xác nhận từ nguồn | Không đổi trạng thái thanh toán (BR-22) |
 | TC-61 `[B]` | Đối tác báo thanh toán thành công | Nhận sự kiện | Ghi `đã trả`, lưu mã tham chiếu đối soát (FR-22) |
 | TC-62 `[B]` | Đối tác gửi cùng một sự kiện hai lần | Nhận sự kiện trùng | Chỉ một bản ghi, không tạo thêm giao dịch (FR-23) |
 | TC-63 `[B]` | Sự kiện thanh toán đến muộn, sau khi giao dịch đã quá hạn | Nhận sự kiện | Ghi nhận để đối soát thủ công; không tự chuyển trạng thái sai (FR-23, FR-24) |
-| TC-64 `[B]` | Người thắng không thanh toán sau 48 giờ | Quá hạn | Hủy giao dịch có lý do; thông báo người bán; không tự trao quyền cho người đặt giá thứ hai (P-11, FR-24) |
+| TC-64 `[B]` | Người thắng không thanh toán sau 48 giờ | Quá hạn | Hủy giao dịch có lý do; thông báo người bán; tiền đặt trước xử lý theo P-07 và BR-41; không tự trao quyền cho người đặt giá thứ hai (P-11, FR-24) |
 | TC-65 `[B]` | 24 giờ chưa thanh toán | Đến mốc nhắc | Người thắng nhận nhắc nhở (P-11) |
 | TC-66 `[B]` | Tiền đã vào tài khoản bảo đảm | Hệ thống cập nhật | Ghi `đang giữ`; người bán thấy khoản dự kiến nhận và lý do chưa giải ngân (FR-41) |
 | TC-67 `[B]` | Lệnh giải ngân gửi hai lần | Gửi lặp | Chỉ một khoản chi trả (FR-42, BR-38) |
@@ -322,28 +327,34 @@ Chỉ chạy kịch bản này khi PO bật mua ngay trong MVP. Nếu tắt, b�
 
 | TC | Điều kiện | Thao tác | Kết quả mong đợi |
 |---|---|---|---|
-| TC-68 `[A,B]` | Giao dịch đã thanh toán (hoặc đã xác nhận thử nghiệm ở tầng A) | Người bán xem trang giao hàng | Thấy địa chỉ giao hàng và hạn bàn giao 3 ngày làm việc (FR-26) |
+| TC-68 `[A,B]` | B: đối tác xác nhận tiền đang giữ; A: đã có giao dịch thử nghiệm, không xác nhận thanh toán | Người bán xem trang giao hàng | Thấy địa chỉ giao hàng và hạn bàn giao 3 ngày làm việc (FR-26); tầng A vẫn hiển thị cảnh báo giao dịch ngoài nền tảng |
 | TC-69 `[A,B]` | Người bán nhập mã vận đơn | Lưu | Trạng thái `đã bàn giao`, nguồn ghi là "người bán khai" (FR-28) |
 | TC-70 `[A,B]` | Không có mã vận đơn quá 3 ngày làm việc | Đến hạn | Chuyển sang trạng thái ngoại lệ; người mua được mở yêu cầu (P-13, FR-32) |
 | TC-71 `[B]` | Nhà vận chuyển cập nhật giao thành công | Nhận cập nhật | Trạng thái `đã giao` ghi nguồn "nhà vận chuyển xác nhận" (BR-25) |
-| TC-72 `[A]` | Người bán tự đánh dấu đã giao | Bấm xác nhận | Ghi nguồn "tự khai, chưa đối soát"; không bắt đầu tính 7 ngày như giao đã xác minh (BR-25) |
-| TC-73 `[A,B]` | Giao hàng xác minh xong | Đủ 7 ngày lịch không tranh chấp | Giao dịch chuyển `hoàn tất` (P-15, FR-29) |
-| TC-74 `[A,B]` | Người mua bấm "đã nhận" sớm | Xác nhận | Không rút ngắn 7 ngày (P-15) |
-| TC-75 `[A,B]` | Giao thành công về vận chuyển nhưng người mua mở tranh chấp trong 7 ngày | Mở tranh chấp | Không hoàn tất tự động (FR-29) |
+| TC-72 `[A]` | Người bán tự đánh dấu đã giao | Bấm xác nhận | Ghi nguồn "tự khai, chưa đối soát"; không bắt đầu tính 15 ngày như giao đã xác minh (BR-25) |
+| TC-73 `[B]` | Giao hàng xác minh xong | Đủ 15 ngày lịch không tranh chấp | Giao dịch đủ điều kiện `hoàn tất` và giải ngân qua đối tác (P-15, FR-29) |
+| TC-74 `[B]` | Người mua bấm "đã nhận" sớm | Xác nhận | Không rút ngắn 15 ngày (P-15) |
+| TC-75 `[B]` | Giao thành công về vận chuyển nhưng người mua mở tranh chấp trong 15 ngày | Mở tranh chấp | Không hoàn tất tự động, không giải ngân (FR-29) |
 
 ### 14.9. Tranh chấp (FR-30 đến FR-32, P-16, P-17, BR-27, BR-28, BR-39)
 
 | TC | Điều kiện | Thao tác | Kết quả mong đợi |
 |---|---|---|---|
-| TC-76 `[A,B]` | Giao dịch đã giao, trong 7 ngày | Người mua mở tranh chấp, kèm lý do và ảnh | Cấp mã theo dõi, khóa bằng chứng, thông báo người bán (FR-30) |
-| TC-77 `[A,B]` | Tranh chấp đang mở | Người bán không phản hồi trong 3 ngày làm việc | Vụ chuyển sang trạng thái ưu tiên cho vận hành; giải ngân vẫn bị chặn (P-16) |
-| TC-78 `[A,B]` | Tranh chấp đang mở | Thử giải ngân | Bị chặn; lý do hiển thị |
+| TC-76 `[A,B]` | A: hai bên bất đồng về giao dịch ngoài nền tảng; B: giao đã xác minh và còn trong 15 ngày | Người mua mở tranh chấp, kèm lý do và ảnh | Cấp mã theo dõi, khóa bằng chứng, thông báo người bán (FR-30); A xử lý thủ công, B chặn giải ngân |
+| TC-77 `[A,B]` | Tranh chấp đang mở | Người bán không phản hồi trong 3 ngày làm việc | Vụ chuyển sang trạng thái ưu tiên cho vận hành; A không được đóng thử nghiệm, B tiếp tục chặn giải ngân (P-16) |
+| TC-78 `[B]` | Tranh chấp đang mở | Thử giải ngân | Bị chặn; lý do hiển thị |
 | TC-79 `[A,B]` | Vận hành yêu cầu thêm chứng cứ | Gửi yêu cầu | Các bên nhận thông báo; hạn phản hồi hiển thị (FR-31) |
-| TC-80 `[A,B]` | Vận hành quyết định hoàn một phần | Xác nhận quyết định | Ghi lý do, căn cứ, người quyết định; hoàn đúng số tiền; không hoàn lặp (FR-31, BR-38) |
-| TC-81 `[A,B]` | Một bên kháng nghị trong 48 giờ | Gửi kháng nghị kèm chứng cứ mới | Tiền vẫn bị chặn; kháng nghị được xem xét (P-16) |
+| TC-80 `[B]` | Vận hành quyết định hoàn một phần | Xác nhận quyết định | Ghi lý do, căn cứ, người quyết định; hoàn đúng số tiền; không hoàn lặp (FR-31, BR-38) |
+| TC-81 `[A,B]` | Một bên kháng nghị trong 48 giờ | Gửi kháng nghị kèm chứng cứ mới | Kháng nghị được xem xét; A chưa đóng thử nghiệm, B tiếp tục chặn giải ngân (P-16) |
 | TC-82 `[A,B]` | Kháng nghị gửi sau 48 giờ | Gửi | Từ chối với lý do hết hạn |
 | TC-83 `[B]` | Giao dịch đã hoàn tất và đã giải ngân | Người mua mở tranh chấp | Đi theo quy trình riêng; không hứa thu hồi ngay (P-17) |
-| TC-84 `[A,B]` | Tranh chấp và giải ngân đến gần như cùng lúc | Gửi đồng thời | Không chi trả trái chính sách; có lịch sử xử lý để đối soát |
+| TC-84 `[B]` | Tranh chấp và giải ngân đến gần như cùng lúc | Gửi đồng thời | Không chi trả trái chính sách; có lịch sử xử lý để đối soát |
+| TC-103 `[B]` | Trong 15 ngày sau giao | Người mua yêu cầu trả hàng với lý do "đổi ý" | Không có lý do này trong danh sách; hệ thống chỉ cho chọn lý do hợp lệ ở P-21 (FR-46) |
+| TC-104 `[B]` | Hàng sai sản phẩm, ảnh và video mở hộp rõ ràng | Người mua gửi yêu cầu hợp lệ | Chặn giải ngân; vận hành quyết định theo bản mô tả đã khóa; hoàn toàn bộ, người mua không chịu phí trả hàng (P-21, FR-47) |
+| TC-105 `[B]` | Người mua khai hàng nghi giả, chứng cứ rõ | Vận hành duyệt | Có thể hoàn không cần trả hàng; người mua phải không bán lại hàng (BR-42) |
+| TC-106 `[B]` | Người mua khai hàng giả nhưng có nhiều yêu cầu hoàn bất thường trước đó | Vận hành mở hồ sơ | Hệ thống hiển thị lịch sử và dấu hiệu gian lận; không tự hoàn chỉ vì lý do (FR-48) |
+| TC-107 `[B]` | Đã quá 15 ngày sau giao | Người mua yêu cầu hoàn vì hàng giả | Không hoàn tự động; chuyển thành báo cáo FR-34 và thông báo quyền khiếu nại; vận hành xử lý người bán (P-21 mục 7) |
+| TC-108 `[B]` | Người mua trả về món hàng khác hoặc đã dùng hỏng | Vận hành xác nhận | Từ chối hoàn; hạn chế quyền yêu cầu hoặc khóa theo quy trình, có nhật ký và kháng nghị (BR-43) |
 
 ### 14.10. Đánh giá, báo cáo và vận hành (FR-33 đến FR-37, P-18, P-20)
 
@@ -366,11 +377,35 @@ Chỉ chạy kịch bản này khi PO bật mua ngay trong MVP. Nếu tắt, b�
 | TC-94 `[A,B]` | Ba tài khoản mới cùng đặt giá trong 2 phút cuối | Vận hành xem báo cáo | Báo cáo đánh dấu cụm bất thường để kiểm tra |
 | TC-95 `[A,B]` | Hai tài khoản cùng số điện thoại hoặc cùng địa chỉ giao hàng | Đặt giá trên cùng phiên | Đánh dấu cho vận hành; không tự hủy kết quả (FR-35) |
 
-### 14.12. Ngoài phạm vi tầng A và giới hạn kiểm thử
+### 14.12. Tiền đặt trước (FR-44, FR-45, BR-40, BR-41, P-07)
+
+Giá trị số chỉ là ví dụ vì tỷ lệ đặt trước chưa chốt. Giả sử giá khởi điểm 1.000.000 VND và tỷ lệ 10%, tức tiền đặt trước 100.000 VND.
+
+| TC | Điều kiện | Thao tác | Kết quả mong đợi |
+|---|---|---|---|
+| TC-96 `[B]` | Người dùng chưa nộp tiền đặt trước cho phiên | Gửi lượt giá đầu tiên | Từ chối, yêu cầu nộp đặt trước; hiển thị số tiền, thời điểm hoàn và các trường hợp mất (FR-44) |
+| TC-97 `[B]` | Đối tác xác nhận đã giữ 100.000 VND | Gửi lượt giá hợp lệ | Chấp nhận; trạng thái đặt trước hiển thị là `đang giữ` |
+| TC-98 `[B]` | Người đặt giá không thắng | Phiên kết thúc | Đặt trước được giải phóng hoặc hoàn trong hạn công bố; có nhật ký (FR-45) |
+| TC-99 `[B]` | Người thắng, giá chốt 1.500.000 VND | Thanh toán phần còn lại | Phần còn lại là 1.400.000 VND; không trừ đặt trước hai lần (FR-45, BR-38) |
+| TC-100 `[B]` | Người thắng không thanh toán quá hạn | Hết hạn P-11 | Mất đặt trước theo quy tắc đã công bố; có nhật ký; các bên được thông báo (BR-41) |
+| TC-101 `[B]` | Đối tác gửi sự kiện giữ hoặc hoàn tiền hai lần | Nhận sự kiện trùng | Chỉ ghi một lần (FR-23, BR-38) |
+| TC-102 `[A]` | Tầng A có thể giao dịch tiền thật ngoài nền tảng | Đặt giá | Không yêu cầu đặt trước qua hệ thống; hiển thị cảnh báo nền tảng không xác nhận hoặc bảo vệ tiền chuyển ngoài nền tảng (M-D2) |
+### 14.13. Mua ngay và đóng giao dịch thử nghiệm ở tầng A
+
+| TC | Điều kiện | Thao tác | Kết quả mong đợi |
+|---|---|---|---|
+| TC-109 `[A]` | Chưa có giá hợp lệ, người mua xác nhận mua ngay | Xác nhận | Tạo đúng một giao dịch thử nghiệm ở giá mua ngay; hai bên tự thanh toán ngoài nền tảng, không chờ xác nhận từ đối tác |
+| TC-110 `[A]` | Hai bên cung cấp bằng chứng giao hàng và không có tranh chấp mở | Vận hành đóng giao dịch | Ghi `hoàn tất thử nghiệm`, người quyết định, lý do, nguồn bằng chứng; mở đánh giá, không ghi `đã thanh toán` hoặc tạo lệnh giải ngân/hoàn |
+| TC-111 `[A]` | Chỉ có lời tự khai giao hàng hoặc bằng chứng chưa đủ | Vận hành thử đóng giao dịch | Giữ chờ xem xét; không mở đánh giá hoặc xác nhận thanh toán |
+| TC-112 `[A]` | Hai bên bất đồng hoặc tranh chấp đang mở | Vận hành thử đóng giao dịch | Từ chối đóng; giữ hồ sơ tranh chấp và bằng chứng để xem xét thủ công |
+| TC-113 `[A]` | Giao dịch đã `hoàn tất thử nghiệm` | Gửi lại thao tác đóng | Không tạo thêm kết quả hoặc thay đổi trạng thái tiền; lưu dấu vết thao tác |
+| TC-114 `[A]` | Chưa có giá hợp lệ; mua ngay và lượt giá đầu đến gần như đồng thời | Gửi đồng thời | Theo thứ tự máy chủ chỉ một nhánh thắng; không tạo hai giao dịch hoặc vừa có người thắng đấu giá vừa có người mua ngay |
+
+### 14.14. Ngoài phạm vi tầng A và giới hạn kiểm thử
 
 - Các kịch bản `[B]` không chạy ở tầng A.
 - Kịch bản tải (50 yêu cầu đồng thời ở mục 9) là đề xuất của BA, chờ D-07. Nếu PO chọn quy mô khác, sửa lại con số trong mục 9 và TC-41.
-- Kịch bản mua ngay (nhóm 14.6) chỉ chạy khi PO bật mua ngay trong MVP.
+- Kịch bản mua ngay (nhóm 14.6 và TC-109) chỉ chạy khi PO bật mua ngay trong MVP.
 - Kịch bản pháp lý và đối soát với đối tác không nằm trong bảng này, mà thuộc kế hoạch thử nghiệm riêng ở file 05.
 
-**Tổng số:** 95 kịch bản. Có 9 kịch bản chỉ dành cho tầng B (TC-61 đến TC-67, TC-71, TC-83), nên tầng A chạy 86 kịch bản. Nếu PO không bật mua ngay, bỏ thêm 7 kịch bản ở nhóm 14.6 (TC-50 đến TC-56).
+**Tổng số:** 114 kịch bản; 82 áp dụng cho tầng A, 98 cho tầng B, trong đó 66 áp dụng cả hai. Nếu PO không bật mua ngay, bỏ nhóm TC-50 đến TC-56 và TC-109, TC-114 khỏi tầng tương ứng.

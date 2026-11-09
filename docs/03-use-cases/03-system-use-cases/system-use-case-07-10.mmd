@@ -1,0 +1,56 @@
+flowchart LR
+    Buyer["Người mua / người thắng"]
+    Seller["Người bán"]
+    Ops["Vận hành"]
+    Payment["Đối tác thanh toán · B"]
+    Carrier["Nhà vận chuyển · B"]
+
+    subgraph AN["AuctionNoow · ranh giới hệ thống"]
+      subgraph B07["BUC-07 · Thanh toán"]
+        U0701(["SUC-07-01 · Xem thông tin thanh toán · A,B"])
+        U0702(["SUC-07-02 · Ghi lời khai chuyển tiền · A"])
+        U0703(["SUC-07-03 · Thanh toán qua đối tác · B"])
+        U0704(["SUC-07-04 · Xử lý sự kiện trùng, muộn · B"])
+        U0705(["SUC-07-05 · Tra cứu, đối soát · A,B"])
+      end
+      subgraph B08["BUC-08 · Bỏ thanh toán"]
+        U0801(["SUC-08-01 · Nhắc, quá hạn, hủy giao dịch · A,B"])
+        U0802(["SUC-08-02 · Xử lý tiền đặt trước · B"])
+        U0803(["SUC-08-03 · Hạn chế tài khoản tái phạm · B"])
+      end
+      subgraph B09["BUC-09 · Giao hàng"]
+        U0901(["SUC-09-01 · Xem giao hàng, hạn bàn giao · A,B"])
+        U0902(["SUC-09-02 · Nhập mã vận đơn · A,B"])
+        U0903(["SUC-09-03 · Cập nhật trạng thái giao · A,B"])
+        U0904(["SUC-09-04 · Xử lý quá hạn, giao thất bại · A,B"])
+      end
+      subgraph B10["BUC-10 · Hoàn tất, giải ngân"]
+        U1001(["SUC-10-01 · Hoàn tất tự động · B"])
+        U1002(["SUC-10-02 · Giải ngân người bán · B"])
+        U1003(["SUC-10-03 · Hoàn tiền người mua · B"])
+        U1004(["SUC-10-04 · Đóng thử nghiệm thủ công · A"])
+      end
+    end
+
+    Buyer --- U0701
+    Buyer --- U0702
+    Buyer --- U0703
+    Seller --- U0901
+    Seller --- U0902
+    Ops --- U0705
+    Ops --- U0802
+    Ops --- U0803
+    Ops --- U0904
+    Ops --- U1003
+    Ops --- U1004
+    Payment --- U0703
+    Payment --- U0704
+    Payment --- U0802
+    Payment --- U1002
+    Payment --- U1003
+    Carrier --- U0903
+
+    classDef onlyA fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef onlyB fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class U0702,U1004 onlyA
+    class U0703,U0704,U0802,U0803,U1001,U1002,U1003 onlyB

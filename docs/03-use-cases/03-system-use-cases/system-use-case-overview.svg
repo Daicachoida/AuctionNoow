@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="495" viewBox="0 0 1880 495" role="img" aria-labelledby="title desc">
+<title id="title">system use case overview</title>
+<desc id="desc">Mỗi hàng là một use case; chấm tròn cho biết tác nhân tham gia. Nhãn A, B thể hiện tầng áp dụng.</desc>
+<rect width="1880" height="495" fill="#ffffff"/>
+<text x="45" y="60" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#172b43">AuctionNoow · System Use Case</text>
+<text x="45" y="92" font-family="Arial,sans-serif" font-size="17" fill="#526579">system-use-case-overview · 4 nhóm/use case</text>
+<line x1="45" y1="112" x2="1835" y2="112" stroke="#cbd5e1" stroke-width="2"/>
+<text x="45" y="139" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">Tác nhân tham gia</text>
+<text x="1042" y="139" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">Use case trong hệ thống</text>
+<text x="114" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Khách</text>
+<line x1="114" y1="184" x2="114" y2="443" stroke="#e2e8f0"/>
+<text x="250" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Người dùng</text>
+<line x1="250" y1="184" x2="250" y2="443" stroke="#e2e8f0"/>
+<text x="388" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Người mua /</text>
+<text x="388" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">người thắng</text>
+<line x1="388" y1="184" x2="388" y2="443" stroke="#e2e8f0"/>
+<text x="524" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Người bán</text>
+<line x1="524" y1="184" x2="524" y2="443" stroke="#e2e8f0"/>
+<text x="662" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Vận hành</text>
+<line x1="662" y1="184" x2="662" y2="443" stroke="#e2e8f0"/>
+<text x="798" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Đối tác thanh</text>
+<text x="798" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">toán / B</text>
+<line x1="798" y1="184" x2="798" y2="443" stroke="#e2e8f0"/>
+<text x="936" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">Nhà vận chuyển /</text>
+<text x="936" y="174" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#334155">B</text>
+<line x1="936" y1="184" x2="936" y2="443" stroke="#e2e8f0"/>
+<line x1="45" y1="238" x2="1835" y2="238" stroke="#e8edf2"/>
+<rect x="1030" y="188" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="1047" y="216" font-family="Arial,sans-serif" font-size="15" fill="#20354a">Tài khoản, tin đăng, tìm kiếm / BUC-01–04 · 20 SUC</text>
+<circle cx="114" cy="211" r="8" fill="#2482b9"/>
+<circle cx="250" cy="211" r="8" fill="#2482b9"/>
+<circle cx="524" cy="211" r="8" fill="#2482b9"/>
+<circle cx="662" cy="211" r="8" fill="#2482b9"/>
+<line x1="45" y1="299" x2="1835" y2="299" stroke="#e8edf2"/>
+<rect x="1030" y="249" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="1047" y="277" font-family="Arial,sans-serif" font-size="15" fill="#20354a">Đấu giá, chốt và dừng phiên / BUC-05–06, 14 · 12 SUC</text>
+<circle cx="388" cy="272" r="8" fill="#2482b9"/>
+<circle cx="524" cy="272" r="8" fill="#2482b9"/>
+<circle cx="662" cy="272" r="8" fill="#2482b9"/>
+<circle cx="798" cy="272" r="8" fill="#2482b9"/>
+<line x1="45" y1="360" x2="1835" y2="360" stroke="#e8edf2"/>
+<rect x="1030" y="310" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="1047" y="338" font-family="Arial,sans-serif" font-size="15" fill="#20354a">Thanh toán, giao hàng, hoàn tất / BUC-07–10 · 16 SUC</text>
+<circle cx="388" cy="333" r="8" fill="#2482b9"/>
+<circle cx="524" cy="333" r="8" fill="#2482b9"/>
+<circle cx="662" cy="333" r="8" fill="#2482b9"/>
+<circle cx="798" cy="333" r="8" fill="#2482b9"/>
+<circle cx="936" cy="333" r="8" fill="#2482b9"/>
+<line x1="45" y1="421" x2="1835" y2="421" stroke="#e8edf2"/>
+<rect x="1030" y="371" width="810" height="45" rx="22" fill="#eef2f7" stroke="#9aa9b9" stroke-width="1.5"/>
+<text x="1047" y="399" font-family="Arial,sans-serif" font-size="15" fill="#20354a">Tranh chấp, đánh giá, vận hành / BUC-11–13 · 15 SUC</text>
+<circle cx="388" cy="394" r="8" fill="#2482b9"/>
+<circle cx="524" cy="394" r="8" fill="#2482b9"/>
+<circle cx="662" cy="394" r="8" fill="#2482b9"/>
+<circle cx="798" cy="394" r="8" fill="#2482b9"/>
+<text x="45" y="471" font-family="Arial,sans-serif" font-size="14" fill="#526579">Chấm tròn = tác nhân tham gia · A = giao dịch ngoài nền tảng · B = thanh toán qua đối tác</text>
+</svg>

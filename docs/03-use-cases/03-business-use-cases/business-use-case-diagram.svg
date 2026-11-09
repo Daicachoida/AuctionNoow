@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1530" viewBox="0 0 1800 1530" role="img" aria-labelledby="title desc">
+<title id="title">AuctionNoow — sơ đồ 14 Business Use Case</title>
+<desc id="desc">Mỗi hàng là một business use case. Chấm màu ở cột tác nhân cho biết vai trò tham gia. Màu hình bầu dục biểu thị giai đoạn nghiệp vụ.</desc>
+<rect width="1800" height="1530" fill="#ffffff"/>
+<text x="58" y="62" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#16283b">AuctionNoow · Business Use Case</text>
+<text x="58" y="94" font-family="Arial,sans-serif" font-size="17" fill="#526579">14 BUC · Vai trò tham gia và phạm vi MVP</text>
+<text x="58" y="149" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#324960">Tác nhân</text>
+<text x="1150" y="149" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#324960">Business use case trong AuctionNoow</text>
+<line x1="58" y1="166" x2="1740" y2="166" stroke="#c8d4df" stroke-width="2"/>
+<text x="100" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Khách</text>
+<text x="210" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Người dùng</text>
+<text x="330" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Người mua</text>
+<text x="450" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Người bán</text>
+<text x="570" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Vận hành</text>
+<text x="690" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Thanh toán</text>
+<text x="810" y="195" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" fill="#324960">Vận chuyển</text>
+<rect x="913" y="175" width="827" height="1196" rx="22" fill="#f8fafc" stroke="#9eb2c5" stroke-width="2"/>
+<text x="32" y="204" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#2365a6">THAM GIA</text>
+<line x1="58" y1="276" x2="1740" y2="276" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="100" cy="235" r="10" fill="#2365a6"/><circle cx="100" cy="235" r="3.2" fill="#ffffff"/>
+<circle cx="210" cy="235" r="10" fill="#2365a6"/><circle cx="210" cy="235" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="235" rx="380" ry="33" fill="#e7f0fb" stroke="#2365a6" stroke-width="1.6"/>
+<text x="983" y="241" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#2365a6">BUC-01</text>
+<text x="1080" y="241" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Đăng ký, xác thực tài khoản</text>
+<text x="1705" y="240" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="358" x2="1740" y2="358" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="450" cy="317" r="10" fill="#2365a6"/><circle cx="450" cy="317" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="317" r="10" fill="#2365a6"/><circle cx="570" cy="317" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="317" rx="380" ry="33" fill="#e7f0fb" stroke="#2365a6" stroke-width="1.6"/>
+<text x="983" y="323" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#2365a6">BUC-02</text>
+<text x="1080" y="323" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Xác minh người bán</text>
+<text x="1705" y="322" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="440" x2="1740" y2="440" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="450" cy="399" r="10" fill="#2365a6"/><circle cx="450" cy="399" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="399" r="10" fill="#2365a6"/><circle cx="570" cy="399" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="399" rx="380" ry="33" fill="#e7f0fb" stroke="#2365a6" stroke-width="1.6"/>
+<text x="983" y="405" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#2365a6">BUC-03</text>
+<text x="1080" y="405" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Đăng hàng và duyệt tin</text>
+<text x="1705" y="404" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="522" x2="1740" y2="522" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="100" cy="481" r="10" fill="#2365a6"/><circle cx="100" cy="481" r="3.2" fill="#ffffff"/>
+<circle cx="330" cy="481" r="10" fill="#2365a6"/><circle cx="330" cy="481" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="481" rx="380" ry="33" fill="#e7f0fb" stroke="#2365a6" stroke-width="1.6"/>
+<text x="983" y="487" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#2365a6">BUC-04</text>
+<text x="1080" y="487" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Tìm, xem, đề xuất mặt hàng</text>
+<text x="1705" y="486" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B*</text>
+<text x="32" y="532" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#247849">ĐẤU GIÁ</text>
+<line x1="58" y1="604" x2="1740" y2="604" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="563" r="10" fill="#247849"/><circle cx="330" cy="563" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="563" r="10" fill="#247849"/><circle cx="690" cy="563" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="563" rx="380" ry="33" fill="#e7f5ee" stroke="#247849" stroke-width="1.6"/>
+<text x="983" y="569" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#247849">BUC-05</text>
+<text x="1080" y="569" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Đặt giá và mua ngay</text>
+<text x="1705" y="568" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="686" x2="1740" y2="686" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="645" r="10" fill="#247849"/><circle cx="330" cy="645" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="645" r="10" fill="#247849"/><circle cx="450" cy="645" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="645" rx="380" ry="33" fill="#e7f5ee" stroke="#247849" stroke-width="1.6"/>
+<text x="983" y="651" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#247849">BUC-06</text>
+<text x="1080" y="651" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Chốt phiên, xác định người thắng</text>
+<text x="1705" y="650" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<text x="32" y="696" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a65b18">GIAO DỊCH</text>
+<line x1="58" y1="768" x2="1740" y2="768" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="727" r="10" fill="#a65b18"/><circle cx="330" cy="727" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="727" r="10" fill="#a65b18"/><circle cx="450" cy="727" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="727" r="10" fill="#a65b18"/><circle cx="570" cy="727" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="727" r="10" fill="#a65b18"/><circle cx="690" cy="727" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="727" rx="380" ry="33" fill="#fff0df" stroke="#a65b18" stroke-width="1.6"/>
+<text x="983" y="733" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#a65b18">BUC-07</text>
+<text x="1080" y="733" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Thanh toán</text>
+<text x="1705" y="732" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A/B khác luồng</text>
+<line x1="58" y1="850" x2="1740" y2="850" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="809" r="10" fill="#a65b18"/><circle cx="330" cy="809" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="809" r="10" fill="#a65b18"/><circle cx="450" cy="809" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="809" r="10" fill="#a65b18"/><circle cx="570" cy="809" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="809" r="10" fill="#a65b18"/><circle cx="690" cy="809" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="809" rx="380" ry="33" fill="#fff0df" stroke="#a65b18" stroke-width="1.6"/>
+<text x="983" y="815" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#a65b18">BUC-08</text>
+<text x="1080" y="815" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Xử lý người thắng bỏ thanh toán</text>
+<text x="1705" y="814" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A/B khác luồng</text>
+<line x1="58" y1="932" x2="1740" y2="932" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="891" r="10" fill="#a65b18"/><circle cx="330" cy="891" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="891" r="10" fill="#a65b18"/><circle cx="450" cy="891" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="891" r="10" fill="#a65b18"/><circle cx="570" cy="891" r="3.2" fill="#ffffff"/>
+<circle cx="810" cy="891" r="10" fill="#a65b18"/><circle cx="810" cy="891" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="891" rx="380" ry="33" fill="#fff0df" stroke="#a65b18" stroke-width="1.6"/>
+<text x="983" y="897" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#a65b18">BUC-09</text>
+<text x="1080" y="897" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Giao hàng</text>
+<text x="1705" y="896" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A/B khác nguồn</text>
+<line x1="58" y1="1014" x2="1740" y2="1014" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="973" r="10" fill="#a65b18"/><circle cx="330" cy="973" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="973" r="10" fill="#a65b18"/><circle cx="450" cy="973" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="973" r="10" fill="#a65b18"/><circle cx="570" cy="973" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="973" r="10" fill="#a65b18"/><circle cx="690" cy="973" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="973" rx="380" ry="33" fill="#fff0df" stroke="#a65b18" stroke-width="1.6"/>
+<text x="983" y="979" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#a65b18">BUC-10</text>
+<text x="1080" y="979" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Hoàn tất giao dịch, giải ngân</text>
+<text x="1705" y="978" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A/B khác luồng</text>
+<text x="32" y="1024" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#7450a6">HẬU MÃI</text>
+<line x1="58" y1="1096" x2="1740" y2="1096" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="1055" r="10" fill="#7450a6"/><circle cx="330" cy="1055" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="1055" r="10" fill="#7450a6"/><circle cx="450" cy="1055" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="1055" r="10" fill="#7450a6"/><circle cx="570" cy="1055" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="1055" r="10" fill="#7450a6"/><circle cx="690" cy="1055" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="1055" rx="380" ry="33" fill="#f2ecfb" stroke="#7450a6" stroke-width="1.6"/>
+<text x="983" y="1061" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#7450a6">BUC-11</text>
+<text x="1080" y="1061" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Tranh chấp, trả hàng, hoàn tiền</text>
+<text x="1705" y="1060" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A/B khác luồng</text>
+<line x1="58" y1="1178" x2="1740" y2="1178" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="1137" r="10" fill="#7450a6"/><circle cx="330" cy="1137" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="1137" r="10" fill="#7450a6"/><circle cx="450" cy="1137" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="1137" r="10" fill="#7450a6"/><circle cx="570" cy="1137" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="1137" rx="380" ry="33" fill="#f2ecfb" stroke="#7450a6" stroke-width="1.6"/>
+<text x="983" y="1143" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#7450a6">BUC-12</text>
+<text x="1080" y="1143" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Đánh giá</text>
+<text x="1705" y="1142" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="1260" x2="1740" y2="1260" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="1219" r="10" fill="#7450a6"/><circle cx="330" cy="1219" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="1219" r="10" fill="#7450a6"/><circle cx="450" cy="1219" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="1219" r="10" fill="#7450a6"/><circle cx="570" cy="1219" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="1219" rx="380" ry="33" fill="#f2ecfb" stroke="#7450a6" stroke-width="1.6"/>
+<text x="983" y="1225" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#7450a6">BUC-13</text>
+<text x="1080" y="1225" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Giám sát, kiểm duyệt, chống đặt giá ảo</text>
+<text x="1705" y="1224" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<text x="32" y="1270" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#247849">ĐẤU GIÁ</text>
+<line x1="58" y1="1342" x2="1740" y2="1342" stroke="#e4eaf0" stroke-width="1"/>
+<circle cx="330" cy="1301" r="10" fill="#247849"/><circle cx="330" cy="1301" r="3.2" fill="#ffffff"/>
+<circle cx="450" cy="1301" r="10" fill="#247849"/><circle cx="450" cy="1301" r="3.2" fill="#ffffff"/>
+<circle cx="570" cy="1301" r="10" fill="#247849"/><circle cx="570" cy="1301" r="3.2" fill="#ffffff"/>
+<circle cx="690" cy="1301" r="10" fill="#247849"/><circle cx="690" cy="1301" r="3.2" fill="#ffffff"/>
+<ellipse cx="1327" cy="1301" rx="380" ry="33" fill="#e7f5ee" stroke="#247849" stroke-width="1.6"/>
+<text x="983" y="1307" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#247849">BUC-14</text>
+<text x="1080" y="1307" font-family="Arial,sans-serif" font-size="19" fill="#1c3044">Dừng hoặc hủy phiên có căn cứ</text>
+<text x="1705" y="1306" font-family="Arial,sans-serif" font-size="12" text-anchor="end" fill="#526579">A+B</text>
+<line x1="58" y1="1406" x2="1740" y2="1406" stroke="#c8d4df" stroke-width="2"/>
+<circle cx="75" cy="1440" r="8" fill="#2365a6"/><text x="95" y="1446" font-family="Arial,sans-serif" font-size="15" fill="#324960">Chấm màu: tác nhân tham gia BUC</text>
+<text x="700" y="1446" font-family="Arial,sans-serif" font-size="15" fill="#324960">A: giao dịch tiền ngoài nền tảng · B: thanh toán bảo đảm qua đối tác</text>
+<text x="58" y="1483" font-family="Arial,sans-serif" font-size="14" fill="#526579">* BUC-04: tìm và xem thuộc MVP; đề xuất mặt hàng ngoài MVP, chờ PO. Đối tác thanh toán chỉ tham gia ở tầng B.</text>
+</svg>
+

@@ -1,0 +1,41 @@
+flowchart LR
+    Guest["Khách"]
+    Buyer["Người mua"]
+    Seller["Người bán"]
+    Ops["Vận hành"]
+    Payment["Đối tác thanh toán · B"]
+
+    subgraph AN["AuctionNoow · ranh giới hệ thống"]
+      subgraph B05["BUC-05 · Đặt giá và mua ngay"]
+        U0501(["SUC-05-01 · Đặt giá · A,B"])
+        U0502(["SUC-05-02 · Gia hạn 2 phút cuối · A,B"])
+        U0503(["SUC-05-03 · Xem phiên, theo dõi giá · A,B"])
+        U0504(["SUC-05-04 · Mua ngay, giữ chỗ · A,B"])
+        U0505(["SUC-05-05 · Nộp tiền đặt trước · B"])
+        U0506(["SUC-05-06 · Thông báo vượt giá, kết quả · A,B"])
+      end
+      subgraph B06["BUC-06 · Chốt phiên"]
+        U0601(["SUC-06-01 · Đóng phiên, xác định người thắng · A,B"])
+        U0602(["SUC-06-02 · Đóng phiên không có giá · A,B"])
+        U0603(["SUC-06-03 · Tạo giao dịch, báo kết quả · A,B"])
+      end
+      subgraph B14["BUC-14 · Dừng, hủy phiên"]
+        U1401(["SUC-14-01 · Người bán dừng tin trước giá đầu · A,B"])
+        U1402(["SUC-14-02 · Vận hành dừng, hủy có căn cứ · A,B"])
+        U1403(["SUC-14-03 · Xử lý giá đã có, thông báo · A,B"])
+      end
+    end
+
+    Guest --- U0503
+    Buyer --- U0501
+    Buyer --- U0503
+    Buyer --- U0504
+    Buyer --- U0505
+    Seller --- U1401
+    Ops --- U1402
+    Payment --- U0505
+    Payment --- U0504
+    Payment --- U1403
+
+    classDef onlyB fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    class U0505 onlyB
